@@ -4,25 +4,26 @@ The GROUP3.pdf file is the transcript works of our group to showcase the finding
 
 The work distribution for this activity is written below:
 Reporter:
-- Michael
-- Haro
+- Michael Johan A. Gregorio
+- Harold James D. Cruz
 
 Gagawa ng ppt:
-- Charles
-- Ronalyn
+- Charles DG. Nudalo
+- Ronalyn O. David
 
 Gagawa ng transcript:
-- Ronalyn
-- Jayvee
+- Ronalyn O. David
+- Jayvee Rayniel B. Iggo
 
 CSS:
-- Charles
-- Margarette
-- Michael
+- Charles DG. Nudalo
+- Ann Margarette G. Concepcion
+- Michael Johan A. Gregorio
+- Timothy Matthew C. Malto
 
 Function:
-- Timothy
-- Haro
-- Margarette
-- Aaron
-- Jayvee
+- Timothy Matthew C. Malto
+- Harold James D. Cruz
+- Ann Margarette G. Concepcion
+- Aaron Paul E. Castillo
+- Jayvee Rayniel B. Iggo
