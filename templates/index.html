@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+    <title> Group 3 | Testing Search Algorithm</title>
+</head>
+<style>
+
+body {
+    color: #333;
+}
+
+main {
+    margin-top: 10px;
+    padding: 20px;
+}
+
+h1 {
+    color: #FBACBE;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2,
+h3 {
+    color: #333;
+}
+</style>
+<body>
+    <header class="header">
+        {% include 'navbar.html' %}
+    </header>
+    <div class="bg"></div>
+    <div class="center">
+        <div class="title"> 
+            Search Algorithm Testers
+        </div>
+        <div class="description">
+        <p>Welcome to our website! We are the spectacular <b>GROUP 3</b> from <i>BSCPE 2-6</i> </p>
+        <p>and this is a platform dedicated to testing search algorithms.</p>
+        <p>Explore our content and learn more about the exciting world of search algorithms and their applications.</p>
+        <p>Feel free to navigate through our website using the navigation bar above.</p>
+        </div>
+    </div>
+    <div class="big-number">
+        <img src="{{ url_for('static', filename='e1.png') }}" alt="e1">
+    </div>
+    
+</body>
+</html>
