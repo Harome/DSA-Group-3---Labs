@@ -168,6 +168,11 @@ def search():
     array = data["array"]
     target = data["target"]
 
+
+
+
+
+
     result_iterative = exponential_search(array, target)
     # result_recursive = exponential_search_recursive(array, target)
 
