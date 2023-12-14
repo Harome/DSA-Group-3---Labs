@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infix to Postfix Converter</title>
+</head>
+<body>
+    <h1>Infix to Postfix Converter</h1>
+    <form method="post" action="/gstacks">
+        <label for="infix_expression">Enter an infix expression:</label>
+        <input type="text" name="infix_expression" required>
+        <button type="submit">Convert</button>
+    </form>
+
+    {% if result %}
+        <h2>Result:</h2>
+        <p>Input infix: {{ result.infix_expression }}</p>
+        <p>Output postfix: {{ result.postfix_expression }}</p>
+
+        <h3>Steps:</h3>
+        <table>
+            <tr>
+                <th>Step</th>
+                <th>Symbol</th>
+                <th>Stack</th>
+                <th>Output</th>
+            </tr>
+            {% for step in result.steps %}
+                <tr>
+                    <td>{{ step.step }}</td>
+                    <td>{{ step.symbol }}</td>
+                    <td>{{ step.stack }}</td>
+                    <td>{{ step.output }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

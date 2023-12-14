@@ -6,7 +6,7 @@ from interpolation_search import interpolation_search, interpolation_search_wrap
 from jump_search import jump_search, jump_search_wrapper
 from linear_search import linear_search, linear_search_wrapper
 from ternary_search import ternary_search, ternary_search_wrapper
-
+from gstacks import infix_to_postfix
 
 app = Flask(__name__)
 
@@ -15,6 +15,9 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route("/works")
+def works():
+    return render_template("works.html")
 
 @app.route("/profile")
 def profile():
@@ -25,8 +28,8 @@ def generate_data_range(size):
     return range(1, size + 1)
 
 
-@app.route("/works", methods=["GET", "POST"])
-def works():
+@app.route("/sechy", methods=["GET", "POST"])
+def sechy():
     data_size_mapping = {"small": 100, "medium": 1000, "large": 10000}
 
     test_data = ""  # Define test_data outside the conditional blocks
@@ -43,7 +46,7 @@ def works():
 
             if not array_str or not target_str or not search_type:
                 return render_template(
-                    "works.html", error="Invalid input. Ensure all fields are filled."
+                    "sechy.html", error="Invalid input. Ensure all fields are filled."
                 )
         else:
             return render_template("works.html", error="Invalid data size.")
@@ -137,7 +140,7 @@ def works():
                 # result = ternary_search(array, target, low, high)
 
             return render_template(
-                "works.html",
+                "sechy.html",
                 result=result,
                 search_type=search_type,
                 execution_time=execution_time,
@@ -145,11 +148,11 @@ def works():
             )
         except ValueError:
             return render_template(
-                "works.html",
+                "sechy.html",
                 error="Invalid input. Ensure the array and target are integers.",
             )
 
-    return render_template("works.html", test_data=test_data)
+    return render_template("sechy.html", test_data=test_data)
 
 
 @app.route("/search", methods=["POST"])
@@ -175,6 +178,15 @@ def search():
         }
     )
 
+@app.route('/gstacks', methods=['GET', 'POST'])
+def gstacks():
+    result = None
+
+    if request.method == 'POST':
+        infix_expression = request.form['infix_expression']
+        result = infix_to_postfix(infix_expression)
+
+    return render_template('gstacks.html', result=result)
 
 if __name__ == "__main__":
     app.run(debug=True)
