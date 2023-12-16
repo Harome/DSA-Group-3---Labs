@@ -44,6 +44,12 @@ def infix_to_postfix(infix):
 
     print("Step\t|\tSymbol\t|\tStack\t|\tOutput")
 
+    result = {
+        "steps": [],
+        "infix_expression": infix,
+        "postfix_expression": "",
+    }
+
     for step, char in enumerate(infix):
         if char.isalnum():
             output.append(char)
@@ -58,38 +64,36 @@ def infix_to_postfix(infix):
                 output.append(stack.pop())
             stack.push(char)
 
-        print(f"{step + 1}\t|\t{char}\t|\t{''.join([item.data for item in stack_traverse(stack.top)]) if stack.top else 'Empty'}\t|\t{''.join(output)}")
+        steps = Stack()
+        for item in stack_traverse(stack.top):
+            steps.push(item.data)
 
-    # Use a separate variable for the second loop
-    step_second_loop = step + 1
-
-    while not stack.is_empty():
-        output.append(stack.pop())
-        print(f"{step_second_loop}\t|\t-\t|\t{''.join([item.data for item in stack_traverse(stack.top)]) if stack.top else 'Empty'}\t|\t{''.join(output)}")
-
-    # Modify the function to return the result instead of printing
-    result = {
-        "steps": [],
-        "infix_expression": infix,
-        "postfix_expression": "",
-    }
-
-    for step, char in enumerate(infix):
         result["steps"].append({
             "step": step + 1,
             "symbol": char,
-            "stack": ''.join([item.data for item in stack_traverse(stack.top)]) if stack.top else 'Empty',
+            "stack": ''.join([item.data for item in stack_traverse(steps.top)]) if steps.top else 'Empty',
             "output": ''.join(output),
         })
 
+        print(f"{step + 1}\t|\t{char}\t|\t{''.join([item.data for item in stack_traverse(steps.top)]) if steps.top else 'Empty'}\t|\t{''.join(output)}")
+
+    # Use a separate variable for the second loop
+    step_second_loop = step + 2
+
     while not stack.is_empty():
         output.append(stack.pop())
+        steps = Stack()
+        for item in stack_traverse(stack.top):
+            step_stack.push(item.data)
+
         result["steps"].append({
             "step": step_second_loop,
             "symbol": "-",
-            "stack": ''.join([item.data for item in stack_traverse(stack.top)]) if stack.top else 'Empty',
+            "stack": ''.join([item.data for item in stack_traverse(steps.top)]) if steps.top else 'Empty',
             "output": ''.join(output),
         })
+
+        print(f"{step_second_loop}\t|\t-\t|\t{''.join([item.data for item in stack_traverse(steps.top)]) if steps.top else 'Empty'}\t|\t{''.join(output)}")
 
     result["postfix_expression"] = ''.join(output)
 
