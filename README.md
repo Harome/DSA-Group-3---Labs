@@ -1,4 +1,4 @@
-# BSCPE 2-6 DSA-Group-3 ---Search-Algorithms 
+# BSCPE 2-6 DSA-Group-3 ---Labs
 
 The GROUP3.pdf file is the transcript works of our group to showcase the finding for the six search algorithm in terms of time and performance efficiency.
 
