@@ -18,38 +18,44 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-
+} 
+ 
+/* NavBar */
 nav {
     position: fixed;
-    background: linear-gradient(to right, #8e44ad, #E9D2F4);
+    top: 0;
+    left: 0;
     width: 100%;
-    /* Set width to 100% for a horizontal navbar */
     height: 80px;
-    /* Adjust height as needed */
     padding: 20px 0;
+    transition: all 0.4s ease;
+    background: linear-gradient(to right, #8e44ad, #E9D2F4);
     z-index: 12;
     display: flex;
     justify-content: space-between;
-    /* Align items horizontally */
     align-items: center;
-    /* Center items vertically */
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    /* Rounded corners for the navigation bar */
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px; 
 }
 
-.menu {
-    max-width: 1250px;
-    margin: 20px;
+
+nav.sticky {
+    padding: 15px 20px;
+    background: #4070f4;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav .nav-content {
+    height: 100%;
+    max-width: 1200px;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
 }
 
-
-.menu .logo a {
+nav .logo a {
     text-decoration: none;
     color: #fff;
     font-size: 50px;
@@ -58,24 +64,25 @@ nav {
     text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.menu ul {
-    list-style: none;
+nav.sticky .logo a {
+    color: #fff;
+}
+
+nav .nav-links{
+    display: flex;
+    margin: auto;
+
+}
+.nav-content .nav-links {
     display: flex;
 }
 
-.menu ul li {
-    margin-right: 20px;
-    /* Add margin to separate the menu items */
-}
-.menu ul li:first-child {
-    margin-left: 975px;
-}
-.menu ul li:last-child {
-    margin-right: 0;
-    /* Remove right margin for the last menu item */
+.nav-content .nav-links li {
+    list-style: none;
+    margin: 0 8px;
 }
 
-.menu ul li a {
+.nav-links li a {
     text-decoration: none;
     color: #fff;
     font-size: 18px;
@@ -87,11 +94,22 @@ nav {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.menu ul li a:hover {
+.nav-links li a:hover {
     background: #fff;
     color: #8e44ad;
     transform: scale(1.05);
 }
+
+nav.sticky .nav-links li a {
+    color: #fff;
+    transition: all 0.4s ease;
+}
+
+nav.sticky .nav-links li a:hover {
+    color: #0E2431;
+}
+
+/* Index */
 
 .description{
     line-height: 1.5rem;
@@ -210,6 +228,66 @@ nav {
 }
 
 /* Works */
+.works {
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    width: max-content;
+    margin: 0 auto;
+    color: #07374a;
+    text-align: center;
+    overflow: hidden;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    margin-top: 2.5rem;
+}
+
+.works-content {
+    padding: 20px;
+}
+
+.works-content h1,
+.works-content h2 {
+    color: #333;
+}
+
+.works-content ul {
+    list-style: none;
+}
+
+.works-content li {
+    margin-bottom: 10px;
+}
+
+.works-content a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: #318caf;
+    border-radius: 8px;
+    display: block;
+}
+
+.works-content a:hover {
+    color: #0056b3;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    .works {
+        width: 90%;
+    }
+}
+
+
+
+
+
+/* Search Algo */
 .container {
     position: absolute;
     top: 10%;
@@ -296,4 +374,85 @@ h1 {
 
 .result{
     font-weight: 700;
+}
+
+/* Stacks */
+.stack {
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    width: max-content;
+    margin: 0 auto;
+    color: #07374a;
+    overflow: hidden;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    margin-top: 2.5rem;
+}
+
+.stack h1 {
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+.stack form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.stack label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.stack input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.stack button {
+    background-color: #07374a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.stack button:hover {
+    background-color: #07374a;
+}
+
+.result {
+    margin-top: 30px;
+}
+
+.result h2 {
+    color: #333;
+}
+
+.steps {
+    margin-top: 20px;
+}
+
+.steps table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.steps th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.steps th {
+    background-color: #07374a;
+    color: #fff;
 }
