@@ -55,19 +55,6 @@ nav .nav-content {
     justify-content: space-between;
 }
 
-nav .logo a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 50px;
-    font-weight: 700;
-    line-height: 0.8;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-nav.sticky .logo a {
-    color: #fff;
-}
-
 nav .nav-links{
     display: flex;
     margin: auto;
@@ -149,6 +136,43 @@ nav.sticky .nav-links li a:hover {
     margin-left: 2rem;
 }
 
+.workbtn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #D7ACF4; /* Light Purple */
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff; /* Text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    z-index: 3;
+    margin-right: 1125px;
+}
+
+.workbtn:hover {
+    background-color: #B7245C; /* Darker Purple on hover */
+}
+
+
+.grppic {
+    position: fixed;
+    bottom: -75px; 
+    right: 5px;
+    width: 750px; /* Adjust to your desired width */
+    height: 563px; /* Adjust to your desired height */
+    z-index: 1;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.grppic:hover {
+    transform: translate(10px, -10px);
+}
+
 .big-number {
     position: fixed;
     bottom: 1px; 
@@ -158,6 +182,8 @@ nav.sticky .nav-links li a:hover {
     transform: rotate(15deg);
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
     mix-blend-mode: screen;
+    z-index: 2; /* Ensure the big number is above the group picture */
+    /* Add any other styles you need for the big number */
 }
 
 /* Profile */
