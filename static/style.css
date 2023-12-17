@@ -157,6 +157,7 @@ nav.sticky .nav-links li a:hover {
     height: 450px; 
     transform: rotate(15deg);
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+    mix-blend-mode: screen;
 }
 
 /* Profile */
@@ -168,6 +169,8 @@ nav.sticky .nav-links li a:hover {
     align-items: center;
     flex-direction: column;
     height: 100vh;
+    position: relative;
+    z-index: 5;
 }
 
 .profile-container {
@@ -225,6 +228,14 @@ nav.sticky .nav-links li a:hover {
     color: #fff;
     font-size: 30px;
     font-weight: 600;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .profile-box {
+        width: 100%;
+        margin-right: 0;
+    }
 }
 
 /* Works */
