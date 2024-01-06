@@ -1,55 +1,50 @@
-
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    background-color: #F2CEE6;
-    background-image: url('pink_bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    overflow: hidden;
-}
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
-
-.queue-section {
+.queue-container {
+    max-width: 800px;
+    margin: 50px auto;
     background-color: #fff;
-    border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 20px;
-    margin-top: 2.5rem;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
-}
-
-.queue-section h2 {
-    color: #07374a;
-    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
 
-.queue-form {
-    margin-top: 20px;
+.queue-container h1,
+h2 {
+    color: #333;
     text-align: center;
 }
 
-.queue-form label {
-    display: block;
+.queue-input,
+.queue-removed {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
     margin-bottom: 10px;
 }
 
-.queue-form input {
+input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
-.queue-form button {
+#remove_option {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.queue-removed button {
     background-color: #07374a;
     color: #fff;
     padding: 10px 20px;
@@ -58,29 +53,29 @@ body {
     cursor: pointer;
 }
 
-.queue-form button:hover {
+.queue-removed option{
+    text-align: center;
+}
+
+.queue-removed button:hover {
+    background-color: #07374a;
+}
+button {
+    background-color: #07374a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
     background-color: #07374a;
 }
 
-.queue-list {
-    margin-top: 30px;
-}
-
-.queue-list ul {
-    list-style: none;
-}
-
-.queue-list li {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
-    .queue-section {
-        width: 90%;
+@media only screen and (max-width: 600px) {
+    .queue-container {
+        margin: 20px;
+        
     }
 }
