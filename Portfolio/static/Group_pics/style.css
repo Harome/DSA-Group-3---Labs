@@ -213,6 +213,12 @@ nav.sticky .nav-links li a:hover {
     margin-bottom: 20px;
 }
 
+.profile-box-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: text;
+}
+
 .profile-box {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -371,13 +377,13 @@ nav.sticky .nav-links li a:hover {
 }
 
 .btn-primary {
-    background-color: #318caf;;
+    background-color: #318caf;
     text-align: center;
     padding: 5px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    margin-top: 10px
+    margin-top: 10px;
 }
 
 .alert-success {
@@ -420,15 +426,32 @@ h1 {
     font-weight: 700;
 }
 
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        left: 10%;
+        width: 80%;
+    }
+
+    #array {
+        width: 100%;
+    }
+
+    .btn-clear {
+        bottom: 20px;
+    }
+}
+
 /* Stacks */
 .stack {
     position: absolute;
     top: 10%;
     left: 35%;
     width: max-content;
+    max-height: 70vh;
+    overflow-y: auto;
     margin: 0 auto;
     color: #07374a;
-    overflow: hidden;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -499,4 +522,28 @@ td {
 .steps th {
     background-color: #07374a;
     color: #fff;
+}
+
+/* Media Query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .stack {
+        width: 90%;
+        left: 5%;
+    }
+
+    .stack h1,
+    .stack form,
+    .stack label,
+    .stack input,
+    .stack button,
+    .result,
+    .result h2,
+    .steps,
+    .steps table,
+    .steps th,
+    .steps td {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
 }

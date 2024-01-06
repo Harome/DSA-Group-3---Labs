@@ -157,6 +157,17 @@ def sechy():
 
     return render_template("Website_html/sechy.html", test_data=test_data)
 
+@app.route("/gstacks", methods=["GET", "POST"])
+def gstacks():
+    result = None
+
+    if request.method == "POST":
+        infix_expression = request.form["infix_expression"]
+        result = infix_to_postfix(infix_expression)
+
+    return render_template("Website_html/gstacks.html", result=result)
+
+
 #Haro
 @app.route('/haro')
 def haro():
@@ -596,15 +607,6 @@ def search():
         }
     )
 
-@app.route('/gstacks', methods=['POST'])
-def gstacks():
-    result = None
-
-    if request.method == 'POST':
-        infix_expression = request.form['infix_expression']
-        result = infix_to_postfix(infix_expression)
-
-    return render_template('gstacks.html', result=result)
 
 class QueueHandler:
     def __init__(self):
