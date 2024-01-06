@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='mattstyleprojects.css') }}">
+    <title>Area of a triangle</title>
+</head>
+<body>
+    <h1>Enter the base and height of the triangle</h1>
+    
+    <form action="/matttriangle" method="post">
+        <label for="inputBase">Base:</label>
+        <input type="number" id="inputBase" name="inputBase" required>
+        <label for="inputHeight">Height:</label>
+        <input type="number" id="inputHeight" name="inputHeight" required>
+        <input type="submit" value="Find area">
+    </form>
+    
+    {% if result is not none %}
+    <p>Area of the triangle with base {{ request.form.inputBase }} and height {{ request.form.inputHeight }} is {{ result }}
+    </p>
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <a href="/mattworks">Return to Projects</a>
+</body>
+</html>

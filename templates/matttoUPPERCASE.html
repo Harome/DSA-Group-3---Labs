@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='mattstyleprojects.css') }}">
+    <title>Convert to Uppercase</title>
+</head>
+
+<body>
+    <h1>Convert String to Uppercase</h1>
+    <form action="/mattuppercase" method="post">
+        <label for="inputString">Enter a string:</label>
+        <input type="text" id="inputString" name="inputString">
+        <input type="submit" value="Convert">
+    </form>
+
+    {% if result %}
+    <p>Converted string: {{ result }}</p>
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <a href="/mattworks">Return to Projects</a>
+</body>
+
+</html>
