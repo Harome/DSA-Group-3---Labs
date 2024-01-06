@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<style>
+body {
+    background-image: url('static/Aaron/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffffff;
+    border: 3px solid #87CEEB;
+    padding: 20px;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.menu, .menu2 {
+    text-align: left;
+    width: 45%;
+}
+
+.menu2 {
+    margin-top: 25px;
+}
+
+.menu2 button {margin-bottom: 0;}
+
+form {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 3px;
+}
+
+input {
+    padding: 8px;
+    width: 96%;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    color: #000000;
+    background-color: skyblue;
+    color: #fff;
+    border: 2px solid skyblue;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+button:hover {
+        background-color: whitesmoke;
+        color: skyblue;
+        transition: ease-in-out 0.5s;
+    } 
+
+select {
+    padding: 8px;
+    width: 100%;
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+ul {
+    
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+}
+
+li {
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #87CEEB;
+    border-radius: 4px;
+}
+
+.result {
+    background-color: #ffffff;
+    border: 3px solid #87CEEB;
+    padding: 20px;
+    width: 70%;
+    margin: 20px auto;
+}
+
+h2 {
+    color: black;
+}
+
+p {
+    color: #000000;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .menu, .menu2 {
+        width: 100%;
+    }
+}
+
+.btn-container {
+        float: left;
+        position: absolute;
+        margin-left: 10px;
+        margin-bottom: 100px;
+    }
+
+</style>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Linked-List</title>
+</head>
+<body>
+    <div class="btn-container">
+        <nav>
+            <a href="/aaron">
+                <button class='button'> < Return</button>
+            </a>
+        </nav>
+    </div>
+    <h1>Stack Linked-List</h1>
+    <div class="container">
+        <div class="menu">
+            <form method="post" action="/push">
+                <label for="data">Enter Data:</label>
+                <input type="text" name="data" required>
+                <button type="submit">Push</button>
+            </form>
+            <br>
+            
+            <form method="get" action="/pop">
+                <button type="submit">Pop</button>
+            </form>
+            <br>
+            
+            <form method="get" action="/peek">
+                <button type="submit">Peek</button>
+            </form>
+            <br>
+            
+            <form method="get" action="/clear">
+                <button type="submit">Clear Stack</button>
+            </form>
+            <br>
+            
+            <form method="get" action="/size">
+                <button type="submit">Stack Size</button>
+            </form>
+            <br>
+        </div>
+        <div class="menu2">
+            <form method="get" action="/create_new_stack">
+                <button type="submit">Create New Stack</button>
+            </form>
+            <br>
+            <form method="post" action="/select_stack" onsubmit="return validateSelect('edit_stack')">
+                <label for="edit_stack">Choose Stack to Edit:</label>
+                <select name="edit_stack" id="edit_stack">
+                    <option value="" selected disabled>Select</option>
+                    {% for stack_name, stack in stacks.items() %}
+                        <option value="{{ stack_name }}">{{ stack_name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Edit Selected Stack</button>
+            </form>
+            <br>
+            <form method="post" action="/merged_stack" onsubmit="return validateSelect('merge_stack_1') && validateSelect('merge_stack_2')">
+                <label for="merge_stack_1">Choose Stack 1:</label>
+                <select name="merge_stack_1" id="merge_stack_1">
+                    <option value="" selected disabled>Select</option>
+                    {% for stack_name, stack in stacks.items() %}
+                        <option value="{{ stack_name }}">{{ stack_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="merge_stack_2">Choose Stack 2:</label>
+                <select name="merge_stack_2" id="merge_stack_2">
+                    <option value="" selected disabled>Select</option>
+                    {% for stack_name, stack in stacks.items() %}
+                        <option value="{{ stack_name }}">{{ stack_name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Merge Stacks</button>
+            </form>
+            <br>
+        </div>
+    </div>
+    <div  class="result">
+        <div class="default-text">
+            <p>-------------------------------------------------------------------------------------------------------</p>
+        </div>
+    {% if current_stack %}
+    <h2>Selected Stack: {{ current_stack }}</h2>
+    <ul>
+        {% for item in stacks[current_stack].print_stack() %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h2>No stack selected.</h2>
+{% endif %}
+    {% if popped_data %}
+        <p>Popped Data: {{ popped_data }}</p>
+    {% endif %}
+    {% if top_data %}
+        <p>Top Data: {{ top_data }}</p>
+    {% endif %}
+    {% if stack_size %}
+        <p>Stack Size: {{ stack_size }}</p>
+    {% endif %}
+</div>
+<script>
+    function validateSelect(selectId) {
+        var selectElement = document.getElementById(selectId);
+        var selectedValue = selectElement.value;
+
+        if (selectedValue === "") {
+            alert("Please select an option first.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+</body>
+</html>

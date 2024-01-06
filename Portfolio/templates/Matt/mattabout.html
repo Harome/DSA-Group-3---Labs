@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Matt/mattstyle.css') }}">
+    <title>About Me</title>
+</head>
+<body>
+    <header class="header">
+        {% include 'Matt/mattnavbar.html' %}
+    </header>
+        <div class="bg"></div>
+        <div class="profile">
+            <h1>Who is he?</h1>
+            <div class="profile-content">
+                <div class="profile-image-container">
+                    <img class="profile-image" src="{{url_for('static', filename='Matt/matt.png')}}" alt="Profile Image">
+                </div>
+                <div class="profile-info">
+                    <p><strong>Name: </strong>Timothy Matthew C. Malto </p>
+                    <p><strong>Age:</strong> 19</p>
+                    <p><strong>Gender:</strong> Male</p>
+                    <p><strong>Location:</strong> Tanay, Rizal</p>
+                    <p><strong>Programming Language (Familiarity): </strong> Python, HTML, CSS, R </p>
+                <div class="profile-add">
+                    <h1>FAQ about me!</h1>
+                    <p><strong>What's your interest?</strong><br> I usually spend my time playing online games, watching TikToks, <br>listening
+                        to music, watching animes, and anything technology related. : > </p>
+                    <p><strong>What's one of your goals?</strong> <br>I really want to be as rich as possible. It is simple, but it will
+                        hugely help me in my interests!^^</p>
+                    <p><strong>Why PUP?</strong> <br>The same reason with everyone, quality education, <br>and "<em>PUP na 'yan e</em>," and I
+                        also want to experience what it's like living in Manila. </p>
+                </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

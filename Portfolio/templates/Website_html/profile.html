@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Group_pics/style.css') }}">
+    <title>Profile</title>
+    <header class="header">
+        {% include 'Website_html/navbar.html' %}
+    </header>
+</head>
+<body>
+    <header></header>
+    <div class="main-content">
+        <div class="profile-container">
+
+            <a href="/aaron" target="_blank" class="profile-box-link">
+                <div class="profile-box">
+                    <img src="{{ url_for('static', filename='Group_pics/p1.png') }}" alt="Profile Image 1">
+                    <h2>Aaron Paul Castillo</h2>
+                    <h4>Programmer</h4>
+                    <p>BIRTHDATE: 09/09/2003</p>
+                    <p>AGE: 20</p>
+                    <p>GENDER: Male</p>
+                    <p>CONTACT NO.: 09454098959</p>
+                </div>
+            </a>
+
+            <a href="profile_details" class="profile-box-link">
+                <div class="profile-box">
+                    <img src="{{ url_for('static', filename='Group_pics/p2.jpg') }}" alt="Profile Image 2">
+                    <h2>Charles DG. Nudalo</h2>
+                    <h4>Programmer</h4>
+                    <p>BIRTHDATE: 09/06/2004</p>
+                    <p>AGE: 19</p>
+                    <p>GENDER: Male</p>
+                    <p>CONTACT NO.: 09568315995</p>
+                </div>
+            </a>
+
+            <a href="profile_details" class="profile-box-link">
+                <div class="profile-box">
+                    <img src="{{ url_for('static', filename='Group_pics/p3.png') }}" alt="Profile Image 3">
+                    <h2>Margarette G. Concepcion</h2>
+                    <h4>Programmer</h4>
+                    <p>BIRTHDATE: 11/11/2004</p>
+                    <p>AGE: 19</p>
+                    <p>GENDER: Female</p>
+                    <p>CONTACT NUMBER: 09692006752</p>
+                </div>
+            </a>
+
+            <a href="haro" class="profile-box-link">
+                <div class="profile-box">
+                    <img src="{{ url_for('static', filename='Group_pics/p4.png') }}" alt="Profile Image 4">
+                    <h2>Harold James D. Cruz</h2>
+                    <h4>Programmer</h4>
+                    <p>BIRTHDATE: 08/09/2002</p>
+                    <p>AGE: 21</p>
+                    <p>GENDER: Male</p>
+                    <p>CONTACT NO.: 09617724024</p>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="profile-container">
+            <a href="profile_details" class="profile-box-link">
+                <div class="profile-box">
+                    <img src="{{ url_for('static', filename='Group_pics/p5.jpg') }}" alt="Profile Image 5">
+                    <h2>Ronalyn O. David</h2>
+                    <h4>Programmer</h4>
+                    <p>BIRTHDATE: 10/13/2003</p>
+                    <p>AGE: 20</p>
+                    <p>GENDER: Female</p>
+                    <p>CONTACT NO.: 09560245474</p>
+                </div>
+            </a>
+
+            <a href="profile_details" class="profile-box-link">
+                <div class="profile-box">
+                    <img src="{{ url_for('static', filename='Group_pics/p6.png') }}" alt="Profile Image 6">
+                    <h2>Michael Johan A. Gregorio</h2>
+                    <h4>Programmer</h4>
+                    <p>BIRTHDATE: 05/19/2003</p>
+                    <p>AGE: 20</p>
+                    <p>GENDER: Male</p>
+                    <p>CONTACT NUMBER: 09475836434</p>
+                </div>
+            </a>
+
+            <a href="/matt" class="profile-box-link">
+                <div class="profile-box">
+                    <img src="{{ url_for('static', filename='Group_pics/p7.png') }}" alt="Profile Image 7">
+                    <h2>Timothy Matthew C. Malto</h2>
+                    <h4>Programmer</h4>
+                    <p>BIRTHDATE: 04/06/2004</p>
+                    <p>AGE: 19</p>
+                    <p>GENDER: Male</p>
+                    <p>CONTACT NUMBER: 09214165392</p>
+                </div>
+            </a>
+
+            <a href="profile_details" class="profile-box-link">
+                <div class="profile-box">
+                    <img src="{{ url_for('static', filename='Group_pics/p8.jpg') }}" alt="Profile Image 8">
+                    <h2>Jayvee Rayniel B. Iggo</h2>
+                    <h4>Programmer</h4>
+                    <p>BIRTHDATE: 12/23/2003</p>
+                    <p>AGE: 19</p>
+                    <p>GENDER: Male</p>
+                    <p>CONTACT NO.: 09169645668</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
