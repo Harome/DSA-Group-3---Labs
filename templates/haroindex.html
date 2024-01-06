@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        .container {
+            background-image: url('{{ url_for('static', filename='images/1-1to.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+            text-align: left;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+            text-align: right;
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .content {
+            font-family: 'Georgia', serif;
+            max-width: 750px;
+            margin: 50px 0; /* Adjust top and bottom margins as needed */
+            padding: 50px;
+            border: 3px solid #5e5e5e;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Style the dropdown links */
+        .dropdown-content a {
+            color: rgb(182, 140, 140);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color on hover */
+        .dropdown-content a:hover {
+            background-color: #1a1717;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="font-size: 30px; color: #fff;">Web of deep trial and Error</h1>
+        </div>
+
+        <div class="nav">
+            <ul style="list-style: none; padding: 0;">
+                <li style="display: inline; margin: 0 20px;">
+                    <a href="/haroprofile" style="text-decoration: none; color: #fff;">Profile</a>
+                </li>
+                <li style="display: inline; margin: 0 20px;">
+                    <a href="/harocontact" style="text-decoration: none; color: #fff;">Contact</a>
+                </li>
+                <li style="display: inline; margin: 0 20px;">
+                    <a href="/" style="text-decoration: none; color: #fff;">Group Portfolio</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Welcome to Haro's page!</h1>
+            <div class="dropdown">
+                <a href="haroworks" style="text-decoration: none; color: #007BFF; font-weight: bold;">See My Programming Works</a>
+                <div class="dropdown-content">
+                    <a href="program1">UpperCase Program</a>
+                    <a href="program2">Area of Circle</a>
+                    <a href="program3">Area of Triangle</a>
+                    <a href="program4">Linked List - Stacks</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            &bull; Created on November 3, 2023
+        </div>
+    </div>
+</body>
+</html>

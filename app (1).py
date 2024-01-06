@@ -7,6 +7,8 @@ from jump_search import jump_search, jump_search_wrapper
 from linear_search import linear_search, linear_search_wrapper
 from ternary_search import ternary_search, ternary_search_wrapper
 from gstacks import infix_to_postfix
+from pystacks import merge_sorted_lists, print_list, create_list
+from queque import Queue
 
 app = Flask(__name__)
 
@@ -154,6 +156,96 @@ def sechy():
 
     return render_template("sechy.html", test_data=test_data)
 
+#Haro
+@app.route('/haro')
+def haro():
+    return render_template('haroindex.html')
+
+@app.route('/haroprofile')
+def haroprofile():
+    return render_template('haroprofile.html')
+
+@app.route('/haroworks')
+def haroworks():
+    return render_template('1w.html')
+
+@app.route('/program1', methods=['GET', 'POST'])
+def program1():
+    result = None
+    if request.method == 'POST':
+        input_string = request.form.get('inputString', '')
+        result = input_string.upper()
+    return render_template('touppercase.html', result=result)
+
+@app.route('/program2', methods=['GET', 'POST'])
+def program2():
+    result1 = None
+    if request.method == 'POST':
+        radius = float(request.form.get('radius', 0))
+        result1 = 3.14 * (radius ** 2)
+    return render_template('areacirc.html', result=result1)
+
+@app.route('/program3', methods=['GET', 'POST'])
+def program3():
+    result2 = None
+    base = float(request.form.get('base', 0))
+    height = float(request.form.get('height', 0))
+    if request.method == 'POST':
+        result2 = 0.5 * base * height  
+
+    return render_template('areatria.html', result2=result2)
+
+@app.route('/program4', methods=['GET', 'POST'])
+def program4():
+    result = None
+    user_input = None  # Initialize user_input outside the conditional
+
+    if request.method == 'POST':
+        user_input = request.form.get("user_input")
+        if user_input.lower() not in ["yes", "no"]:
+            error_message = "Invalid input for 'user_input'. Please enter 'yes' or 'no'."
+            return render_template('mergelists.html', user_input=user_input, error_message=error_message)
+
+        if user_input.lower() == "yes":
+            input_lists = []
+            for list_name in ["list1", "list2"]:
+                input_values = request.form.get(list_name)
+                if not input_values:
+                    error_message = f"Invalid input for '{list_name}'. Please enter a comma-separated list of integers."
+                    return render_template('mergelists.html', user_input=user_input, error_message=error_message)
+
+                input_lists.append(list(map(int, input_values.split(","))))
+
+            list1, list2 = map(create_list, input_lists)
+            merged_list = merge_sorted_lists(list1, list2)
+            result = print_list(merged_list)
+        else:
+            # Use default lists
+            list1 = create_list([1, 2, 4,1])
+            list2 = create_list([1, 3, 4,5])
+            merged_list1 = merge_sorted_lists(list1, list2)
+            result = print_list(merged_list1)
+
+    return render_template('mergelists.html', user_input=user_input, result=result, list1=list1, list2=list2)
+
+@app.route('/harocontact')
+def harocontact():
+    return render_template('harocontacts.html')
+
+#Aaron
+
+#Ronalyn
+
+#Michael
+
+#Margarette
+
+#Timothy
+
+#Charles
+
+#Jayvee
+
 
 @app.route("/search", methods=["POST"])
 def search():
@@ -168,11 +260,6 @@ def search():
     array = data["array"]
     target = data["target"]
 
-
-
-
-
-
     result_iterative = exponential_search(array, target)
     # result_recursive = exponential_search_recursive(array, target)
 
@@ -183,7 +270,7 @@ def search():
         }
     )
 
-@app.route('/gstacks', methods=['GET', 'POST'])
+@app.route('/gstacks', methods=['POST'])
 def gstacks():
     result = None
 
@@ -192,6 +279,58 @@ def gstacks():
         result = infix_to_postfix(infix_expression)
 
     return render_template('gstacks.html', result=result)
+
+class QueueHandler:
+    def __init__(self):
+        self.queue = Queue()
+
+    def enqueue(self, data):
+        self.queue.enqueue(data)
+
+    def dequeue(self, remove_option):
+        if remove_option == 'front':
+            try:
+                return self.queue.dequeue_front()
+            except Exception as e:
+                return str(e)
+        elif remove_option == 'rear':
+            try:
+                return self.queue.dequeue_rear()
+            except Exception as e:
+                return str(e)
+        else:
+            return "Invalid option"
+
+queue_handler = QueueHandler()
+
+@app.route('/qqq', methods=['GET', 'POST'])
+def qqq():
+    if request.method == 'POST':
+        data = request.form['data']
+        queue_handler.enqueue(data)
+
+    # Convert queue elements to a list for iteration in the template
+    queue_list = []
+    current = queue_handler.queue.front
+    while current:
+        queue_list.append(current)
+        current = current.next
+
+    return render_template('qqq.html', queue=queue_list)
+
+@app.route('/remove', methods=['POST'])
+def remove():
+    remove_option = request.form['remove_option']
+    removed_data = queue_handler.dequeue(remove_option)
+
+    # Update the queue_list after removing an element
+    queue_list = []
+    current = queue_handler.queue.front
+    while current:
+        queue_list.append(current)
+        current = current.next
+
+    return render_template('qqq.html', queue=queue_list, removed_data=removed_data)
 
 if __name__ == "__main__":
     app.run(debug=True)

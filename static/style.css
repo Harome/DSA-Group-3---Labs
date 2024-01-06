@@ -12,6 +12,7 @@
 
 body {
     margin: 0;
+    padding: 0;
     overflow: hidden;
     background-color: #F2CEE6;
     background-image: url('pink bg.jpg');
@@ -97,7 +98,6 @@ nav.sticky .nav-links li a:hover {
 }
 
 /* Index */
-
 .description{
     line-height: 1.5rem;
     color: #fff;
@@ -199,8 +199,15 @@ nav.sticky .nav-links li a:hover {
     z-index: 5;
 }
 
+.profile-box-link:hover .profile-box {
+    box-shadow: 0px 0px 10px 5px rgba(246, 147, 250, 0.801); /* Glow effect on hover */
+    transform: scale(1.05); /* Scale up the box on hover */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
 .profile-container {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
