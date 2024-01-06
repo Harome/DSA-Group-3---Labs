@@ -596,7 +596,7 @@ def search():
         }
     )
 
-@app.route('/gstacks', methods=['POST'])
+@app.route('/gstacks', methods=['GET', 'POST'])
 def gstacks():
     result = None
 
@@ -604,7 +604,7 @@ def gstacks():
         infix_expression = request.form['infix_expression']
         result = infix_to_postfix(infix_expression)
 
-    return render_template('gstacks.html', result=result)
+    return render_template('Website_html/gstacks.html', result=result)
 
 class QueueHandler:
     def __init__(self):
