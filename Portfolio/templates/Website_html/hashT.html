@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Table Display</title>
+    <style>
+        /* Add your styles here */
+    </style>
+</head>
+<body>
+    <h1>Hash Table Display</h1>
+    <form method="post" action="/hashT">
+        <label for="hash_function">Select Hash Function:</label>
+        <select name="hash_function" id="hash_function">
+            <option value="1">Hash Function 1</option>
+            <option value="2">Hash Function 2</option>
+            <option value="3">Hash Function 3 (Python Default)</option>
+        </select>
+        <br>
+        <label for="num_commands">Number of Commands:</label>
+        <input type="text" name="num_commands" id="num_commands" required>
+        <br>
+        <label for="commands">Commands (One per line):</label>
+        <textarea name="commands" id="commands" rows="5" required></textarea>
+        <br>
+        <input type="submit" value="Execute Commands">
+    </form>
+
+    {% if table_html %}
+        <h2>Hash Table:</h2>
+        {{ table_html | safe }}
+    {% endif %}
+</body>
+</html>

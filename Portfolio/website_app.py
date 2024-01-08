@@ -10,6 +10,7 @@ from gstacks import infix_to_postfix
 from pystacks import merge_sorted_lists, print_list, create_list
 from queque import Queue
 from stack import Stack
+from hashT import HashTable
 
 app = Flask(__name__)
 
@@ -211,6 +212,8 @@ def program3():
 def program4():
     result = None
     user_input = None  # Initialize user_input outside the conditional
+    list1 = None
+    list2 = None
 
     if request.method == 'POST':
         user_input = request.form.get("user_input")
@@ -714,6 +717,28 @@ def remove():
         current = current.next
 
     return render_template('Website_html/qqq.html', queue=queue_list, removed_data=removed_data)
+
+#THIS IS HASH TABLE, DONT JUDGE PLS.
+hash_table = HashTable(32)
+
+@app.route('/hashT', methods=['GET', 'POST'])
+def hashT():
+    if request.method == 'POST':
+        # Process form data only for POST requests
+        hash_function = int(request.form.get('hash_function', 1))
+        num_commands = int(request.form.get('num_commands', 0))
+        commands = request.form.get('commands', '').split('\n')
+
+        for command in commands[:num_commands]:
+            if command.startswith("del "):
+                key_to_delete = hash(command[4:]) % 32
+                hash_table.delete(key_to_delete, hash_function)
+            else:
+                key_to_insert = hash(command) % 32
+                hash_table.insert(key_to_insert, command, hash_function)
+
+    table_html = hash_table.display_table()
+    return render_template('Website_html/hashT.html', table_html=table_html)
 
 if __name__ == "__main__":
     app.run(debug=True)
