@@ -157,6 +157,17 @@ def sechy():
 
     return render_template("Website_html/sechy.html", test_data=test_data)
 
+@app.route("/gstacks", methods=["GET", "POST"])
+def gstacks():
+    result = None
+
+    if request.method == "POST":
+        infix_expression = request.form["infix_expression"]
+        result = infix_to_postfix(infix_expression)
+
+    return render_template("Website_html/gstacks.html", result=result)
+
+
 #Haro
 @app.route('/haro')
 def haro():
@@ -569,6 +580,61 @@ def mattcontact():
     return render_template("Matt/mattcontacts.html")
 
 #Charles
+@app.route("/charles")
+def homepage_charles():
+    return render_template("Charles/HOMEPAGE.html")
+
+
+@app.route("/Profile")
+def profile_charles():
+    return render_template("Charles/PROFILE.html")
+
+
+@app.route("/Upper", methods=["GET", "POST"])
+def works_charles():
+    result = None
+    if request.method == "POST":
+        input_string = request.form.get("inputString", "")
+        result = input_string.upper()
+    return render_template("Charles/UPPER.html", result=result)
+
+
+@app.route("/Circle", methods=["GET", "POST"])
+def areaofc_charles():
+    result = None
+    if request.method == "POST":
+        input_radius = request.form.get("inputInteger", "")
+
+        if input_radius and input_radius.isdigit():
+            input_radius = int(input_radius)
+            result = (input_radius**2 * 3.14)
+        else:
+            return "Invalid input. Please enter a valid integer for the radius."
+
+    return render_template("Charles/CIRCLE.html", result=result)
+
+
+@app.route("/Triangle", methods=["GET", "POST"])
+def triangle_charles():
+    area = None
+
+    if request.method == "POST":
+        base = request.form.get("base")
+        height = request.form.get("height")
+
+        try:
+            base = float(base)
+            height = float(height)
+            area = (base * height) / 2
+        except ValueError:
+            return "Invalid input. Please enter valid numbers for the base and height."
+
+    return render_template("Charles/TRIANGLE.html", area=area)
+
+
+@app.route("/Contact")
+def contact_charles():
+    return render_template("Charles/CONTACTS.html")
 
 #Jayvee
 
@@ -596,15 +662,6 @@ def search():
         }
     )
 
-@app.route('/gstacks', methods=['GET', 'POST'])
-def gstacks():
-    result = None
-
-    if request.method == 'POST':
-        infix_expression = request.form['infix_expression']
-        result = infix_to_postfix(infix_expression)
-
-    return render_template('Website_html/gstacks.html', result=result)
 
 class QueueHandler:
     def __init__(self):
