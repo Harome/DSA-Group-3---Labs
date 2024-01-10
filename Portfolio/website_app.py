@@ -390,6 +390,52 @@ def mix():
 #Ronalyn
 
 #Michael
+@app.route('/michael')
+def index():
+    return render_template('Michael/index_michael.html')
+
+@app.route('/michael_profile')
+def profile():
+    return render_template('Michael/profile_michael.html')
+
+@app.route('/michael_works')
+def works():
+    return render_template('Michael/works_michael.html')
+
+@app.route('/michael_uppercase', methods=['GET', 'POST'])
+def uppercase():
+    result = None
+    if request.method == 'POST':
+        input_string = request.form.get('inputString', '')
+        result = input_string.upper()
+    return render_template('Michael/touppercase_michael.html', result=result)
+
+@app.route('/michael_circle', methods=['GET', 'POST'])
+def circle():
+    result = None
+    if request.method == 'POST':
+        input_integer = request.form.get('inputInteger', '')
+        if input_integer and input_integer.isdigit():
+            input_integer = int(input_integer)
+            result = input_integer ** 2 * 3.14
+    return render_template('Michael/circle_michael.html', result=result)
+
+@app.route('/michael_triangle', methods=['GET', 'POST'])
+def triangle():
+    result = None
+    if request.method == 'POST':
+        input_base = request.form.get('input_base', '')
+        input_height = request.form.get('input_height', '')
+        
+        if input_base and input_base.isdigit() and input_height and input_height.isdigit():
+            input_base = int(input_base)
+            input_height = int(input_height)
+            result = (input_base * input_height)/2
+    return render_template('Michael/triangle_michael.html', result=result)
+
+@app.route('/michael_contacts')
+def contact():
+    return render_template('contacts_michael.html')
 
 #Margarette
 
