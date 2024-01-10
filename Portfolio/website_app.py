@@ -391,19 +391,19 @@ def mix():
 
 #Michael
 @app.route('/michael')
-def index():
+def index_michael():
     return render_template('Michael/index_michael.html')
 
 @app.route('/michael_profile')
-def profile():
+def profile_michael():
     return render_template('Michael/profile_michael.html')
 
 @app.route('/michael_works')
-def works():
+def works_michael():
     return render_template('Michael/works_michael.html')
 
 @app.route('/michael_uppercase', methods=['GET', 'POST'])
-def uppercase():
+def uppercase_michael():
     result = None
     if request.method == 'POST':
         input_string = request.form.get('inputString', '')
@@ -411,7 +411,7 @@ def uppercase():
     return render_template('Michael/touppercase_michael.html', result=result)
 
 @app.route('/michael_circle', methods=['GET', 'POST'])
-def circle():
+def circle_michael():
     result = None
     if request.method == 'POST':
         input_integer = request.form.get('inputInteger', '')
@@ -421,7 +421,7 @@ def circle():
     return render_template('Michael/circle_michael.html', result=result)
 
 @app.route('/michael_triangle', methods=['GET', 'POST'])
-def triangle():
+def triangle_michael():
     result = None
     if request.method == 'POST':
         input_base = request.form.get('input_base', '')
@@ -434,7 +434,7 @@ def triangle():
     return render_template('Michael/triangle_michael.html', result=result)
 
 @app.route('/michael_contacts')
-def contact():
+def contact_michael():
     return render_template('contacts_michael.html')
 
 #Margarette
@@ -687,6 +687,9 @@ def contact_charles():
 
 #Jayvee
 
+@app.route('/Jayvee')
+def index_Jayvee():
+    return render_template('Jayvee/index.html')
 
 @app.route("/search", methods=["POST"])
 def search():
