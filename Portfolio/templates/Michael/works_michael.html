@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Works</title>
+</head>
+<body >
+    <nav>
+        <div class="nav__content">
+            <div class="logo">
+                <a href="/">Just Johan</a>
+            </div>
+            <label for="check" class="checkbox">
+                <i class="ri-menu-line"></i>
+            </label>
+            <input type="checkbox" name="check" id="check">
+            <ul>
+                <li><a href="/profile">Profile</a></li>
+                <li class="active"><a href="/works">Works</a></li>
+                <li><a href="/contacts">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="section">
+        <div class="section__container">
+            <div class="content">
+                <h1 class="title">
+                    I am <span>Michael Johan <br> </span> and here are some of my programming works.
+                </h1>
+                <ul class="ul__works">
+                    <li><a href="/uppercase">toUpperCase</a></li>
+                    <li><a href="/circle">Area of a Circle</a></li>
+                    <li><a href="/triangle">Area of a Triangle</a></li>
+                </ul>
+                <div class="action__btns">
+                    <button class="home">
+                        <a href="/">
+                            Home
+                        </a>
+                    </button>
+                    <button class="works__now">
+                        <a href="/works">
+                            My Works
+                        </a>
+                    </button>
+                </div>
+            </div>
+            <div class="image">
+                <img src="{{url_for('static', filename='pic8.jpg')}}" alt="profile" />
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
