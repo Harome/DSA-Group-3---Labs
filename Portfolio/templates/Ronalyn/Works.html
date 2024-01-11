@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Works</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Style for the horizontal line */
+
+        /* Style for the menu bar */
+        .menu {
+            position: fixed;
+            top: 0px;
+            right: 0;
+            width: 100%;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #1C3D52;
+            text-align: right;
+        }
+
+        /* Your existing styles for the rest of the page */
+        body {
+            position: relative;
+            font-family: 'impacts', cursive;
+            background-color: #00021F;
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0; /* Reset margin */
+            margin-left: 1in; /* 2-inch margin on the left side */
+        }
+        .menu li {
+            display: inline;
+            margin-right: 60px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: cyan;
+            border-radius: 100%;
+        }
+
+        .menu a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid transparent;
+            border-radius: 100px;
+            pointer-events: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .menu a:hover:before {
+            border-color: cyan;
+        }
+
+        .menu a {
+            margin-right: 10px;
+        }
+
+        .menu a:hover {
+            border-color: cyan;
+            background-color: #1C3D52;
+        }
+
+        .menu i {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .menu i:hover {
+            color: #3388A7;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            color: neonblue;
+        }
+        .highlighted {
+            font-weight: bold;
+            color: neonblue;
+        }
+
+        /* Center-align the boxes */
+        .boxes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            width: 300px; 
+            text-align: center;
+            border: 3px solid transparent;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 3px cyan;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            margin: 1rem;
+            padding: 1rem;
+        }
+
+        .box:hover {
+            border-color: cyan;
+            box-shadow: 0 0 20px 5px cyan; /* Glow effect */
+            transform: scale(1.05);
+        }
+
+        .box i {
+            font-size: 36px;
+            color: gold;
+        }
+
+        .box-name {
+            font-size: 18px;
+            color: gold;
+            margin: 10px 0;
+        }
+
+        .start-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: gold;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .start-button:hover {
+            background-color: transparent;
+            box-shadow: 0 0 5px 2px cyan; /* Add shadow on hover */
+            border-color: cyan; /* Change border color on hover */
+        }
+
+        .main-title {
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            margin: 20px 0; /* Adjust margin as needed */
+            position: absolute; /* Position it absolutely */
+            top: 80px; /* Adjust top position */
+            left: 48%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            width: 200px; /* Adjust width as needed */
+            text-shadow: 0 0 10px cyan; /* Add glow effect to the text */
+        }
+        .box,
+        .box-merge {
+            width: 300px;
+            border: 3px solid transparent;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 3px cyan;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            margin: 1rem;
+            padding: 1rem;
+
+        }
+        .box:hover,
+        .box-merge:hover {
+            border-color: cyan;
+            box-shadow: 0 0 20px 5px cyan; /* Glow effect */
+            transform: scale(1.05);
+        }
+
+        .box-merge {
+            /* Adjust the position as needed */
+            position: absolute;
+            top: 70%; /* Place it below the uppercase box */
+            left: 14%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            text-align: center;
+        }
+        
+            
+    </style>
+</head>
+<body>
+
+    <div class="line"></div>
+
+    <div class="menu">
+        <ul>
+            <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/profile"><i class="fas fa-user"></i> About Me</a></li>
+            <li><a href="/works"><i class="fas fa-code"></i> Works</a></li>
+            <li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
+
+
+    <h1 class="main-title">My Works</h1>
+
+    <div class="boxes">
+        <div class="box">
+            <i class="fas fa-font"></i> 
+            <p class="box-name">Convert to Uppercase</p>
+            <a class="start-button" href="{{ url_for('static', filename='touppercase.html') }}">Let's Start</a>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-circle"></i> 
+            <p class="box-name">Area of the Circle</p>
+            <a class="start-button" href="{{ url_for('static', filename='areacircle.html') }}">Let's Start</a>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-caret-up"></i> 
+            <p class="box-name">Area of the Triangle</p>
+            <a class="start-button" href="{{ url_for('static', filename='areatriangle.html') }}">Let's Start</a>
+        </div>
+
+        <div class="box-merge">
+            <p class="box-name">Merge Linked List</p>
+            <a class="start-button" href="{{ url_for('static', filename='mergelist.html') }}">Let's Start</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Style for the horizontal line */
+
+        /* Style for the menu bar */
+        .menu {
+            position: fixed;
+            top: 0px;
+            right: 0;
+            width: 100%;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #1C3D52;
+            text-align: right;
+        }
+
+        /* Your existing styles for the rest of the page */
+        body {
+            position: relative;
+            font-family: 'impacts', cursive;
+            background-color: #00021F;
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .menu li {
+            display: inline;
+            margin-right: 60px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: cyan;
+            border-radius: 100%;
+        }
+
+        .menu a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid transparent;
+            border-radius: 100px;
+            pointer-events: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .menu a:hover:before {
+            border-color: cyan;
+        }
+
+        .menu a {
+            margin-right: 10px;
+        }
+
+        .menu a:hover {
+            border-color: cyan;
+            background-color: #1C3D52;
+        }
+
+        .menu i {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .menu i:hover {
+            color: #3388A7;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            color: neonblue;
+        }
+        .highlighted {
+            font-weight: bold;
+            color: neonblue;
+        }
+        .social-icons {
+            margin-top: 0.5in;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: cyan;
+            border: 3px solid transparent;
+            border-radius: 100px;
+            padding: 8px;
+            margin-right: 10px;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+            position: relative;
+        }
+
+        .social-icons a:hover {
+            border-color: cyan;
+            background-color: #1C3D52;
+        }
+
+        .social-icons a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid transparent;
+            border-radius: 100px;
+            pointer-events: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .social-icons a:hover:before {
+            border-color: cyan;
+        }
+
+        .greeting {
+            margin-left: 2in;
+        }
+        .name h2 {
+            font-size: 46px;
+            margin-bottom: 5px;
+        }
+        .intro p {
+            font-weight: normal;
+        }
+        .intro {
+            margin-top: 0.2in;
+        }
+        .image {
+            position: absolute;
+            right: 0.9in;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 500px;
+            height: auto;
+        }
+        .main-heading {
+            font-size: 40px;
+            color: #fff;
+        }
+        .highlighted-cyan {
+            color: cyan;
+        }
+        .content-heading {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .email-link {
+            color: cyan;
+            text-decoration: none;
+        }
+        .contact-number {
+            color: cyan;
+        }
+        .contact-info {
+            font-size: 12px; /* Adjust the font size as needed */
+        }
+    </style>
+</head>
+<body>
+    <!-- Add the horizontal line element -->
+    <div class="line"></div>
+
+    <div class="menu">
+        <ul>
+            <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/profile"><i class="fas fa-user"></i> About Me</a></li>
+            <li><a href="/works"><i class="fas fa-code"></i> Works</a></li>
+            <li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
+    <div class="greeting">
+        <h1 class="main-heading">Contact Me</h1>
+        <h2 class="highlighted-cyan">Let's Work Together</h2>
+
+        <div class="intro">
+            <p>As a computer engineering student, who embody a fusion <br>of creativity and logic, shaping the future of technology <br>with unwavering determination.</p>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> Email: <a href="mailto:ronalyndavid1013@gmail.com">ronalyndavid1013@gmail.com</a></p>
+            <p><i class="fas fa-phone"></i> Contact: 09560245474</p>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/rnlyndavid13?mibextid=ZbWKwL"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/ronaaaaahh?igshid=MzMyNGUyNmU2YQ=="><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/your-twitter-link"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/ronalyn-david-4a7555262?trk=contact-info"><i class="fab fa-linkedin"></i></a>
+        </div>
+
+        <img class="image" src="{{ url_for('static', filename='s1.png') }}" alt="Your Image">
+
+    </div>
+</body>
+</html>
