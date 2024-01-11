@@ -389,6 +389,73 @@ def mix():
 
 #Ronalyn
 
+
+@app.route('/Ronalyn')
+def Ronalyn():
+    return render_template('Ronalyn/index.html')
+@app.route('/convert', methods=['POST'])
+def convert_rona():
+    user_input = request.form['user_input']
+    uppercase_input = user_input.upper()
+    return render_template('Ronalyn/touppercase.html', uppercase_input=uppercase_input)
+
+def calculate_triangle_area(a, b, c):
+    s = (a + b + c) / 2
+    area = (s * (s - a) * (s - b) * (s - c)) ** 0.5
+    return area
+
+@app.route("/triangles", methods=["GET", "POST"])
+def triangle_area():
+    if request.method == "POST":
+        side_a = float(request.form["side_a"])
+        side_b = float(request.form["side_b"])
+        side_c = float(request.form["side_c"])
+        triangle_area = calculate_triangle_area(side_a, side_b, side_c)
+        return render_template("Ronalyn/areatriangle.html", triangle_area=triangle_area)
+    return render_template("Ronalyn/areatriangle.html", triangle_area=None)
+
+
+@app.route('/profile_rona')
+def profile_rona():
+    return render_template('Ronalyn/profile.html')
+
+
+@app.route('/ronaw', methods=['GET', 'POST'])
+def ronaw():
+    result = None
+    if request.method == 'POST':
+        input_string = request.form.get('inputString', '')
+        result = input_string.upper()
+    return render_template('Ronalyn/Works.html', result=result)
+@app.route('/touppercase')
+def touppercase_rona():
+    return render_template('Ronalyn/touppercase.html')
+
+@app.route('/areacircle')
+def areacircle():
+    return render_template('Ronalyn/areacircle.html')
+
+@app.route('/areatriangle')
+def areatriangle():
+    return render_template('Ronalyn/areatriangle.html')
+
+
+@app.route('/ronac', methods=['GET', 'POST'])
+def ronac():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+
+
+
+    return render_template('Ronalyn/Contacts.html')
+
+
+
+
+
+
 #Michael
 @app.route('/michael')
 def index_michael():
