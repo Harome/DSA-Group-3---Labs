@@ -25,6 +25,13 @@ class HashTable:
         if self.table[hash_value] is None:
             self.table[hash_value] = [(key, data)]
         else:
+            for i, (stored_key, _) in enumerate(self.table[hash_value]):
+                if stored_key == key:
+                    # Replace existing data if the key already exists
+                    self.table[hash_value][i] = (key, data)
+                    print(f"Replaced data for key {key}")
+                    return
+            # If the key doesn't exist, insert it at the beginning of the stack
             self.table[hash_value].insert(0, (key, data))
 
     def delete(self, key, hash_function):
@@ -54,3 +61,28 @@ class HashTable:
 
     def reset_table(self):
         self.table = [None] * self.size
+
+    def delete_by_data(self, data):
+        for i, stack in enumerate(self.table):
+            if stack is not None:
+                for j, (stored_key, stored_data) in enumerate(stack):
+                    if stored_data == data:
+                        del self.table[i][j]
+                        print(f"Deleted data {data}")
+                        return
+        print(f"Data {data} not found")
+
+    def display_table(self):
+        table = PrettyTable()
+        table.field_names = ["Index", "Key", "Data", "Hash Code"]
+        
+        for i in range(self.size):
+            stack = self.table[i]
+            if stack is not None:
+                for item in stack:
+                    table.add_row([i, item[0], item[1], self.hash_function_3(item[1]) % self.size])
+            else:
+                table.add_row([i, None, None, None])
+        
+        return table.get_html_string()
+

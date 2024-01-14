@@ -19,12 +19,19 @@
         </select>
         <br>
         <label for="num_commands">Number of Commands:</label>
-        <input type="text" name="num_commands" id="num_commands" required>
+        <input type="text" name="num_commands" id="num_commands">
         <br>
         <label for="commands">Commands (One per line):</label>
-        <textarea name="commands" id="commands" rows="5" required></textarea>
+        <textarea name="commands" id="commands" rows="5"></textarea>
         <br>
-        <input type="submit" value="Execute Commands">
+        <!-- New input field for data deletion -->
+        <label for="delete_data">Data to Delete:</label>
+        <input type="text" name="delete_data" id="delete_data">
+        <br>
+        <!-- Button for executing commands -->
+        <input type="submit" name="execute_button" value="Execute Commands">
+        <!-- Button for deleting data -->
+        <button type="submit" name="delete_button" value="1">Delete Data</button>
     </form>
 
     {% if table_html %}

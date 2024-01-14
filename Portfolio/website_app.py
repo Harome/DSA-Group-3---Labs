@@ -837,24 +837,36 @@ def remove():
 #THIS IS HASH TABLE, DONT JUDGE PLS.
 hash_table = HashTable(32)
 
+def execute_commands(commands):
+    # Implement your logic to execute commands and update the hash table
+    # For now, let's assume it returns a string representation of the hash table
+    return "Hash table after executing commands: {}".format(commands)
+
+
 @app.route('/hashT', methods=['GET', 'POST'])
 def hashT():
     if request.method == 'POST':
-        # Process form data only for POST requests
-        hash_function = int(request.form.get('hash_function', 1))
-        num_commands = int(request.form.get('num_commands', 0))
-        commands = request.form.get('commands', '').split('\n')
+        try:
+            hash_function = int(request.form.get('hash_function', 1))
+            num_commands = int(request.form.get('num_commands', 0))
+            commands = request.form.get('commands', '').split('\n')
 
-        for command in commands[:num_commands]:
-            if command.startswith("del "):
-                key_to_delete = hash(command[4:]) % 32
-                hash_table.delete(key_to_delete, hash_function)
-            else:
-                key_to_insert = hash(command) % 32
-                hash_table.insert(key_to_insert, command, hash_function)
+            for command in commands[:num_commands]:
+                if request.form.get('delete_button') == '1':
+                    key_to_delete = int(request.form.get('delete_data', ''))
+                    hash_table.delete(key_to_delete, hash_function)
+                else:
+                    key_to_insert = hash(command) % 32
+                    data_to_insert = command
+                    hash_table.insert(key_to_insert, data_to_insert, hash_function)
 
-    table_html = hash_table.display_table()
-    return render_template('Website_html/hashT.html', table_html=table_html)
+            table_html = hash_table.display_table()
+            return render_template('Website_html/hashT.html', table_html=table_html)
+
+        except ValueError as e:
+            return render_template('Website_html/hashT.html', error=str(e))
+
+    return render_template('Website_html/hashT.html', table_html=None)
 
 if __name__ == "__main__":
     app.run(debug=True)
