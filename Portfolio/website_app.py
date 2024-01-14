@@ -502,7 +502,7 @@ def triangle_michael():
 
 @app.route('/michael_contacts')
 def contact_michael():
-    return render_template('contacts_michael.html')
+    return render_template('Michael/contacts_michael.html')
 
 #Margarette
 

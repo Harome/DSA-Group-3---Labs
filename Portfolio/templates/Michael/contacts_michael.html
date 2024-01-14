@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='Gregorio/style.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <title>Document</title>
 </head>
@@ -18,9 +18,9 @@
             </label>
             <input type="checkbox" name="check" id="check">
             <ul>
-                <li><a href="/profile_michael">Profile</a></li>
-                <li><a href="/works_michael">Works</a></li>
-                <li class="active"><a href="/contacts_michael">Contact</a></li>
+                <li><a href="/michael_profile">Profile</a></li>
+                <li><a href="/michael_works">Works</a></li>
+                <li class="active"><a href="/michael_contacts">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -65,14 +65,14 @@
                         </a>
                     </button>
                     <button class="works">
-                        <a href="/works_michael">
+                        <a href="/michael_works">
                             My Works
                         </a>
                     </button>
                 </div>
             </div>
             <div class="image">
-                <img src="{{url_for('static', filename='pic9.jpg')}}" alt="profile" />
+                <img src="{{url_for('static', filename='Gregorio/pic9.jpg')}}" alt="profile" />
             </div>
         </div>
     </section>
