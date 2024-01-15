@@ -3,40 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='GroupCSS/style.css') }}">
+    <header class="header">
+        {% include 'Website_html/navbar.html' %}
     <title>Hash Table Display</title>
-    <style>
-        /* Add your styles here */
-    </style>
 </head>
 <body>
-    <h1>Hash Table Display</h1>
-    <form method="post" action="/hashT">
-        <label for="hash_function">Select Hash Function:</label>
-        <select name="hash_function" id="hash_function">
-            <option value="1">Hash Function 1</option>
-            <option value="2">Hash Function 2</option>
-            <option value="3">Hash Function 3 (Python Default)</option>
-        </select>
-        <br>
-        <label for="num_commands">Number of Commands:</label>
-        <input type="text" name="num_commands" id="num_commands">
-        <br>
-        <label for="commands">Commands (One per line):</label>
-        <textarea name="commands" id="commands" rows="5"></textarea>
-        <br>
-        <!-- New input field for data deletion -->
-        <label for="delete_data">Data to Delete:</label>
-        <input type="text" name="delete_data" id="delete_data">
-        <br>
-        <!-- Button for executing commands -->
-        <input type="submit" name="execute_button" value="Execute Commands">
-        <!-- Button for deleting data -->
-        <button type="submit" name="delete_button" value="1">Delete Data</button>
-    </form>
-
-    {% if table_html %}
-        <h2>Hash Table:</h2>
-        {{ table_html | safe }}
-    {% endif %}
+    <div class="hash-table">
+        <h1>Hash Table Display</h1>
+        <form method="post" action="/hashT">
+            <label for="hash_function">Select Hash Function:</label>
+            <select name="hash_function" id="hash_function">
+                <option value="1">Hash Function 1</option>
+                <option value="2">Hash Function 2</option>
+                <option value="3">Hash Function 3 (Python Default)</option>
+            </select>
+            <br>
+        <div class="hash-functions">
+            <label for="num_commands">Number of Commands:</label>
+            <input type="text" name="num_commands" id="num_commands">
+            <br>
+            <label for="commands">Commands (One per line):</label>
+            <textarea name="commands" id="commands" rows="5"></textarea>
+            <br>
+            <!-- New input field for data deletion -->
+            <label for="delete_data">Data to Delete:</label>
+            <input type="text" name="delete_data" id="delete_data">
+            <br>
+        </div>
+        <div class="hash-submit-button">
+            <!-- Button for executing commands -->
+            <input type="submit" name="execute_button" value="Execute Commands">
+        </div>
+            <!-- Button for deleting data -->
+        <div class="hash-delete-button">
+            <button type="submit" name="delete_button" value="1">Delete Data</button>
+        </div>
+        </form>
+        <div class="hash-result">
+            {% if table_html %}
+                <h2>Hash Table:</h2>
+                {{ table_html | safe }}
+            {% endif %}
+        </div>
+    </div>
 </body>
 </html>

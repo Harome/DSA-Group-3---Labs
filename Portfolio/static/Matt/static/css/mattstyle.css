@@ -13,7 +13,7 @@ body {
 
 
 .bg {
-    background: url('bg.jpg')no-repeat;
+    background: url('mattbackground.jpg')no-repeat;
     width: 100%;
     height: 100vh;
     background-size: cover;
