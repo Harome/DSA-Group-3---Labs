@@ -11,6 +11,7 @@ from pystacks import merge_sorted_lists, print_list, create_list
 from queque import Queue
 from stack import Stack
 from hashT import HashTable
+from stationsweb import Graph, mrt_graph
 
 app = Flask(__name__)
 
@@ -451,11 +452,6 @@ def ronac():
 
     return render_template('Ronalyn/Contacts.html')
 
-
-
-
-
-
 #Michael
 @app.route('/michael')
 def index_michael():
@@ -503,6 +499,92 @@ def triangle_michael():
 @app.route('/michael_contacts')
 def contact_michael():
     return render_template('Michael/contacts_michael.html')
+
+stacks = {}
+current_stack = None
+popped_data = None
+top_data = None
+stack_size = None
+
+@app.route('/michael_stack_page')
+def michael_stack_page():
+    return render_template('Michael/stack_michael.html', stacks=stacks, current_stack=current_stack, popped_data=popped_data, top_data=top_data, stack_size=stack_size)
+
+
+@app.route('/michael_stack')
+def michael_redirect_to_stack():
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_push', methods=['POST'])
+def michael_push():
+    data = request.form['data']
+    if current_stack:
+        stacks[current_stack].push(data)
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_pop')
+def michael_pop():
+    global popped_data
+    popped_data = None
+    if current_stack:
+        popped_data = stacks[current_stack].pop()
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_peek')
+def michael_peek():
+    global top_data
+    top_data = None
+    if current_stack:
+        top_data = stacks[current_stack].peek()
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_clear')
+def michael_clear():
+    if current_stack:
+        stacks[current_stack].clear_stack()
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_size')
+def michael_size():
+    global stack_size
+    stack_size = None
+    if current_stack:
+        stack_size = stacks[current_stack].size()
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_create_new_stack')
+def michael_create_new_stack():
+    global current_stack
+    current_stack = None
+    new_stack_name = f'stack-{len(stacks) + 1}'
+    stacks[new_stack_name] = Stack()
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_select_stack', methods=['POST'])
+def michael_select_stack():
+    global current_stack, popped_data, top_data, stack_size
+    current_stack = request.form['michael_edit_stack']
+    popped_data = None
+    top_data = None
+    stack_size = None
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_merged_stack', methods=['POST'])
+def michael_mix():
+    global current_stack, popped_data, top_data, stack_size
+    stack_1_name = request.form['michael_merge_stack_1']
+    stack_2_name = request.form['michael_merge_stack_2']
+
+    if stack_1_name in stacks and stack_2_name in stacks:
+        merged_stack_name = f'michael_merged-stack-{len(stacks) + 1}'
+        stacks[merged_stack_name] = Stack()
+        stacks[merged_stack_name].merged_stack(stacks[stack_1_name], stacks[stack_2_name])
+        current_stack = merged_stack_name
+        popped_data = None
+        top_data = None
+        stack_size = None
+
+    return redirect(url_for('michael_stack_page'))
 
 #Margarette
 
@@ -571,10 +653,8 @@ class Stack:
         if self.head is None:
             return None
         else:
-            new_head = self.head.next
-            self.head.next = None
             value = self.head.data
-            self.head = new_head
+            self.head = self.head.next
             return value
 
     def peek(self):
@@ -582,19 +662,25 @@ class Stack:
             return None
         else:
             return self.head.data
+        
+    def __iter__(self):
+        current = self.head
+        while current:
+            yield current.data
+            current = current.next
 
 # Create an instance of the Stack
 stack_instance = Stack()
 
 @app.route('/marga_stack_index')
 def marga_stack_index():
-    return render_template('marga/stackk.html', stack=stack_instance)
+    return render_template('marga/stackk.html', stack_instance=stack_instance)
 
 @app.route('/marga_push', methods=['POST'])
 def marga_push():
-    info = request.form.get('stackInfo', '')
-    stack_instance.push(info)
-    return redirect('/marga_stack_index')
+    new_item = request.form.get('new_item', '')
+    stack_instance.push(new_item)
+    return render_template('marga/stackk.html', stack_instance=stack_instance)
 
 @app.route('/marga_pop')
 def marga_pop():
@@ -604,7 +690,7 @@ def marga_pop():
 @app.route('/marga_peek')
 def marga_peek():
     peek_value = stack_instance.peek()
-    return render_template('marga/stackk.html', peek_value=peek_value)
+    return render_template('marga/stackk.html', peek_value=peek_value, stack_instance=stack_instance)
 
 
 #Timothy
@@ -968,6 +1054,23 @@ def hashT():
             return render_template('Website_html/hashT.html', error=str(e))
 
     return render_template('Website_html/hashT.html', table_html=None)
+
+@app.route('/pathf', methods=['GET', 'POST'])
+def pathf():
+    stations_info = mrt_graph.display_stations()
+
+
+    if request.method == 'POST':
+        start_station = request.form['start_station']   
+        end_station = request.form['end_station']
+
+        shortest_path_length, shortest_path_stations = mrt_graph.shortest_path(start_station, end_station)
+        output = f"The shortest path from {start_station} to {end_station} is {shortest_path_length} stations:<br>"
+        result = f" -> ".join(shortest_path_stations)
+
+        return render_template('Website_html/pathf.html', stations_info=stations_info, result=result, output=output)
+    
+    return render_template('Website_html/pathf.html', stations_info=stations_info)
 
 if __name__ == "__main__":
     app.run(debug=True)

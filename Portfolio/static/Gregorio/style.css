@@ -148,6 +148,7 @@
     .action__btns{
         display: flex;
         gap: 1rem;
+        margin-top: 2rem ;
     }
 
     .action__btns button{
@@ -246,6 +247,38 @@
 
     .alert alert-danger{
         font-weight: 900;
+    }
+
+    .menu form button{
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        padding: 0.5rem 1rem;
+        outline: none;
+        border: 2px solid var(--primary-color);
+        border-radius: 10px;
+        transition: 0.3s;
+        cursor: pointer
+    }
+
+    .menu form button:hover{
+        background-color: var(--primary-color);
+    }
+
+    .menu2 form button{
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        padding: 0.5rem 1rem;
+        outline: none;
+        border: 2px solid var(--primary-color);
+        border-radius: 10px;
+        transition: 0.3s;
+        cursor: pointer
+    }
+
+    .menu2 form button:hover{
+        background-color: var(--primary-color);
     }
 
     @media (width < 750px){
