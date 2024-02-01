@@ -504,6 +504,92 @@ def triangle_michael():
 def contact_michael():
     return render_template('Michael/contacts_michael.html')
 
+stacks = {}
+current_stack = None
+popped_data = None
+top_data = None
+stack_size = None
+
+@app.route('/michael_stack_page')
+def michael_stack_page():
+    return render_template('Michael/stack_michael.html', stacks=stacks, current_stack=current_stack, popped_data=popped_data, top_data=top_data, stack_size=stack_size)
+
+
+@app.route('/michael_stack')
+def michael_redirect_to_stack():
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_push', methods=['POST'])
+def michael_push():
+    data = request.form['data']
+    if current_stack:
+        stacks[current_stack].push(data)
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_pop')
+def michael_pop():
+    global popped_data
+    popped_data = None
+    if current_stack:
+        popped_data = stacks[current_stack].pop()
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_peek')
+def michael_peek():
+    global top_data
+    top_data = None
+    if current_stack:
+        top_data = stacks[current_stack].peek()
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_clear')
+def michael_clear():
+    if current_stack:
+        stacks[current_stack].clear_stack()
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_size')
+def michael_size():
+    global stack_size
+    stack_size = None
+    if current_stack:
+        stack_size = stacks[current_stack].size()
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_create_new_stack')
+def michael_create_new_stack():
+    global current_stack
+    current_stack = None
+    new_stack_name = f'stack-{len(stacks) + 1}'
+    stacks[new_stack_name] = Stack()
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_select_stack', methods=['POST'])
+def michael_select_stack():
+    global current_stack, popped_data, top_data, stack_size
+    current_stack = request.form['michael_edit_stack']
+    popped_data = None
+    top_data = None
+    stack_size = None
+    return redirect(url_for('michael_stack_page'))
+
+@app.route('/michael_merged_stack', methods=['POST'])
+def michael_mix():
+    global current_stack, popped_data, top_data, stack_size
+    stack_1_name = request.form['michael_merge_stack_1']
+    stack_2_name = request.form['michael_merge_stack_2']
+
+    if stack_1_name in stacks and stack_2_name in stacks:
+        merged_stack_name = f'michael_merged-stack-{len(stacks) + 1}'
+        stacks[merged_stack_name] = Stack()
+        stacks[merged_stack_name].merged_stack(stacks[stack_1_name], stacks[stack_2_name])
+        current_stack = merged_stack_name
+        popped_data = None
+        top_data = None
+        stack_size = None
+
+    return redirect(url_for('michael_stack_page'))
+
 #Margarette
 
 @app.route('/marga')
