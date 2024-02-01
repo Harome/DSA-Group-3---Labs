@@ -506,6 +506,52 @@ def contact_michael():
 
 #Margarette
 
+@app.route('/marga')
+def marga_index():
+    return render_template('marga/index.html')
+
+@app.route('/marga_profile')
+def marga_profile():
+    return render_template('marga/profile.html')
+
+@app.route('/marga_contact')
+def marga_contacts():
+    return render_template('marga/contacts.html')
+
+@app.route('/marga_toUpperCase', methods=['GET', 'POST'])
+def marga_upperCase():
+    result = None
+    if request.method == 'POST':
+        input_string = request.form.get('inputString', '')
+        result = input_string.upper()
+    return render_template('marga/touppercase.html', result=result)
+
+@app.route('/marga_works')
+def marga_works():
+    return render_template('marga/works.html')
+
+
+
+
+@app.route('/marga_areaOfcirle', methods=['GET', 'POST'])
+def marga_Area():
+    result = None
+    if request.method == 'POST':
+        input_integer = int(request.form.get('inputInteger', ''))
+        result = 3.14 * (input_integer**2)
+    return render_template('marga/areaofacircle.html', result=result)
+    
+@app.route('/marga_areaOfTriangle', methods=['GET', 'POST'])
+def marga_AreaT():
+    result = None
+    if request.method == 'POST':
+        input_base = int(request.form.get('inputBase', ''))
+        input_height = int(request.form.get('inputHeight', ''))
+        result = (input_base*input_height)/2
+    return render_template('marga/areaofatriangle.html', result=result)
+    
+
+
 #Timothy
 class Node:
     def __init__(self, data):
