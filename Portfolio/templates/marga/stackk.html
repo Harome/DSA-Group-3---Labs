@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Operations</title>
+</head>
+<body>
+    <h1>Stack Content:</h1>
+    <p>{{ stack.peek() }}</p>
+    <form action="/marga_push/{{ new_item }}" method="get">
+        <input type="text" name="new_item" placeholder="Item to Push">
+        <button type="submit">Push</button>
+    </form>
+    <a href="/marga_pop"><button>Pop</button></a>
+    <a href="/marga_peek"><button>Peek</button></a>
+</body>
+</html>

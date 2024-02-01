@@ -549,7 +549,62 @@ def marga_AreaT():
         input_height = int(request.form.get('inputHeight', ''))
         result = (input_base*input_height)/2
     return render_template('marga/areaofatriangle.html', result=result)
-    
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Stack:
+    def __init__(self):
+        self.head = None
+
+    def push(self, info):
+        new_node = Node(info)
+        if self.head is not None:
+            new_node.next = self.head
+            self.head = new_node
+        else:
+            self.head = new_node
+
+    def pop(self):
+        if self.head is None:
+            return None
+        else:
+            new_head = self.head.next
+            self.head.next = None
+            value = self.head.data
+            self.head = new_head
+            return value
+
+    def peek(self):
+        if self.head is None:
+            return None
+        else:
+            return self.head.data
+
+# Create an instance of the Stack
+stack_instance = Stack()
+
+@app.route('/marga_stack_index')
+def marga_stack_index():
+    return render_template('marga/stackk.html', stack=stack_instance)
+
+@app.route('/marga_push', methods=['POST'])
+def marga_push():
+    info = request.form.get('stackInfo', '')
+    stack_instance.push(info)
+    return redirect('/marga_stack_index')
+
+@app.route('/marga_pop')
+def marga_pop():
+    stack_instance.pop()
+    return redirect('/marga_stack_index')
+
+@app.route('/marga_peek')
+def marga_peek():
+    peek_value = stack_instance.peek()
+    return render_template('marga/stackk.html', peek_value=peek_value)
 
 
 #Timothy
