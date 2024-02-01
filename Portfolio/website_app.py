@@ -11,7 +11,13 @@ from pystacks import merge_sorted_lists, print_list, create_list
 from queque import Queue
 from stack import Stack
 from hashT import HashTable
+<<<<<<< Updated upstream
 from stationsweb import Graph, mrt_graph
+=======
+from tree import BinaryTree
+from flask_wtf import FlaskForm
+from wtforms import SelectField, SubmitField
+>>>>>>> Stashed changes
 
 app = Flask(__name__)
 
@@ -1055,6 +1061,7 @@ def hashT():
 
     return render_template('Website_html/hashT.html', table_html=None)
 
+<<<<<<< Updated upstream
 @app.route('/pathf', methods=['GET', 'POST'])
 def pathf():
     stations_info = mrt_graph.display_stations()
@@ -1071,6 +1078,39 @@ def pathf():
         return render_template('Website_html/pathf.html', stations_info=stations_info, result=result, output=output)
     
     return render_template('Website_html/pathf.html', stations_info=stations_info)
+=======
+app.config['SECRET_KEY'] = 'your_secret_key'
+
+class AddNodeForm(FlaskForm):
+    position = SelectField('Add to', choices=[('left', 'Left'), ('right', 'Right')])
+    value = SelectField('Node Value', choices=[(str(i), str(i)) for i in range(1, 11)])
+    submit = SubmitField('Add Node')
+
+app.config['SECRET_KEY'] = 'your_secret_key'
+
+class AddNodeForm(FlaskForm):
+    position = SelectField('Add to', choices=[('left', 'Left'), ('right', 'Right')])
+    value = SelectField('Node Value', choices=[(str(i), str(i)) for i in range(1, 11)])
+    submit = SubmitField('Add Node')
+
+@app.route('/index_tree', methods=['POST'])
+def index_tree():
+    binary_tree = BinaryTree(5)  # Initial root value
+    form = AddNodeForm()
+
+    if form.validate_on_submit():
+        position = form.position.data
+        value = int(form.value.data)
+        if position == 'left':
+            binary_tree.insert_left(binary_tree.root, value)
+        else:
+            binary_tree.insert_right(binary_tree.root, value)
+
+    tree_traversal = binary_tree.inorder_traversal(binary_tree.root, '')
+
+    # Return the updated tree traversal as JSON
+    return jsonify({'tree_traversal': tree_traversal})
+>>>>>>> Stashed changes
 
 if __name__ == "__main__":
     app.run(debug=True)
