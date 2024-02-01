@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Area of a Circle</title>
+</head>
+<body>
+    <h1>Given the radius, print the Area of a circle</h1>
+
+    <form action="/areaOfcirle" method="post">
+        <label for="inputInteger">Enter value of radius:</label>
+        <input type="number" id="inputInteger" name="inputInteger">
+        <input type="submit" value="Area of Circle">
+    </form>
+    <body bgcolor="F3EBFF">
+    {% if result %}
+    <p>Area of Circle: {{ result }}</p>
+    {% endif %}
+    
+
+</body>
+</html>
