@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Linked-List</title>
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.return-button {
+    padding: 15px;
+    background-color: #45a049;
+    border-radius: 8px;
+    width: 50px;
+}
+
+.return-button a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu, .menu2 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input, select {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow-y: auto;
+    max-height: 300px; /* Adjust as needed */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.default-text {
+    color: #888;
+}
+
+</style>
+<body>
+    <div class="return-button">
+        <a href="#" onclick="history.go(-1); return false;">Return</a>
+    </div>
+    <div class="container">
+            <h1>Stack Linked-List</h1>
+        <div class="menu">
+            <form method="post" action="/mattpush">
+                <label for="data">Enter Data:</label>
+                <input type="text" name="data" required>
+                <button type="submit">Push</button>
+            </form>
+            <br>
+
+            <form method="get" action="/mattpop">
+                <button type="submit">Pop</button>
+            </form>
+            <br>
+
+            <form method="get" action="/mattpeek">
+                <button type="submit">Peek</button>
+            </form>
+            <br>
+
+            <form method="get" action="/mattclear">
+                <button type="submit">Clear Stack</button>
+            </form>
+            <br>
+
+            <form method="get" action="/mattsize">
+                <button type="submit">Stack Size</button>
+            </form>
+            <br>
+        </div>
+        <div class="menu2">
+            <form method="get" action="/mattcreate_new_stack">
+                <button type="submit">Create New Stack</button>
+            </form>
+            <br>
+            <form method="post" action="/mattselect_stack" onsubmit="return validateSelect('edit_stack')">
+                <label for="edit_stack">Choose Stack to Edit:</label>
+                <select name="edit_stack" id="edit_stack">
+                    <option value="" selected disabled>Select</option>
+                    {% for stack_name, stack in stacks.items() %}
+                    <option value="{{ stack_name }}">{{ stack_name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Edit Selected Stack</button>
+            </form>
+            <br>
+            <form method="post" action="/mattmerged_stack"
+                onsubmit="return validateSelect('merge_stack_1') && validateSelect('merge_stack_2')">
+                <label for="merge_stack_1">Choose Stack 1:</label>
+                <select name="merge_stack_1" id="merge_stack_1">
+                    <option value="" selected disabled>Select</option>
+                    {% for stack_name, stack in stacks.items() %}
+                    <option value="{{ stack_name }}">{{ stack_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="merge_stack_2">Choose Stack 2:</label>
+                <select name="merge_stack_2" id="merge_stack_2">
+                    <option value="" selected disabled>Select</option>
+                    {% for stack_name, stack in stacks.items() %}
+                    <option value="{{ stack_name }}">{{ stack_name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Merge Stacks</button>
+            </form>
+            <br>
+        </div>
+    </div>
+    <div class="result">
+        <div class="default-text">
+            <p>-------------------------------------------------------------------------------------------------------
+            </p>
+        </div>
+        {% if current_stack %}
+        <h2>Selected Stack: {{ current_stack }}</h2>
+        <ul>
+            {% for item in stacks[current_stack].print_stack() %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h2>No stack selected.</h2>
+        {% endif %}
+        {% if popped_data %}
+        <p>Popped Data: {{ popped_data }}</p>
+        {% endif %}
+        {% if top_data %}
+        <p>Top Data: {{ top_data }}</p>
+        {% endif %}
+        {% if stack_size %}
+        <p>Stack Size: {{ stack_size }}</p>
+        {% endif %}
+    </div>
+    <script>
+        function validateSelect(selectId) {
+            var selectElement = document.getElementById(selectId);
+            var selectedValue = selectElement.value;
+
+            if (selectedValue === "") {
+                alert("Please select an option first.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>
