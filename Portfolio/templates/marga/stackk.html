@@ -7,12 +7,17 @@
 </head>
 <body>
     <h1>Stack Content:</h1>
-    <p>{{ stack.peek() }}</p>
-    <form action="/marga_push/{{ new_item }}" method="get">
+{% for item in stack_instance %}
+    <p>{{ item }}</p>
+{% endfor %}
+    <form action="/marga_push" method="post"> <!-- Change method to post -->
         <input type="text" name="new_item" placeholder="Item to Push">
         <button type="submit">Push</button>
     </form>
     <a href="/marga_pop"><button>Pop</button></a>
     <a href="/marga_peek"><button>Peek</button></a>
+    {% if peek_value %}
+        <p>Peek Value: {{ peek_value }}</p>
+    {% endif %}
 </body>
 </html>

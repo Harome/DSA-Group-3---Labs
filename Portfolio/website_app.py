@@ -11,6 +11,7 @@ from pystacks import merge_sorted_lists, print_list, create_list
 from queque import Queue
 from stack import Stack
 from hashT import HashTable
+from stationsweb import Graph, mrt_graph
 
 app = Flask(__name__)
 
@@ -451,11 +452,6 @@ def ronac():
 
     return render_template('Ronalyn/Contacts.html')
 
-
-
-
-
-
 #Michael
 @app.route('/michael')
 def index_michael():
@@ -657,10 +653,8 @@ class Stack:
         if self.head is None:
             return None
         else:
-            new_head = self.head.next
-            self.head.next = None
             value = self.head.data
-            self.head = new_head
+            self.head = self.head.next
             return value
 
     def peek(self):
@@ -668,19 +662,25 @@ class Stack:
             return None
         else:
             return self.head.data
+        
+    def __iter__(self):
+        current = self.head
+        while current:
+            yield current.data
+            current = current.next
 
 # Create an instance of the Stack
 stack_instance = Stack()
 
 @app.route('/marga_stack_index')
 def marga_stack_index():
-    return render_template('marga/stackk.html', stack=stack_instance)
+    return render_template('marga/stackk.html', stack_instance=stack_instance)
 
 @app.route('/marga_push', methods=['POST'])
 def marga_push():
-    info = request.form.get('stackInfo', '')
-    stack_instance.push(info)
-    return redirect('/marga_stack_index')
+    new_item = request.form.get('new_item', '')
+    stack_instance.push(new_item)
+    return render_template('marga/stackk.html', stack_instance=stack_instance)
 
 @app.route('/marga_pop')
 def marga_pop():
@@ -690,77 +690,10 @@ def marga_pop():
 @app.route('/marga_peek')
 def marga_peek():
     peek_value = stack_instance.peek()
-    return render_template('marga/stackk.html', peek_value=peek_value)
+    return render_template('marga/stackk.html', peek_value=peek_value, stack_instance=stack_instance)
 
 
 #Timothy
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-
-class Stack:
-    def __init__(self):
-        self.top = None
-
-    def push(self, data):
-        new_node = Node(data)
-        new_node.next = self.top
-        self.top = new_node
-
-    def pop(self):
-        if self.top is None:
-            return None
-        popped_data = self.top.data
-        self.top = self.top.next
-        return popped_data
-
-    def peek(self):
-        return self.top.data if self.top else None
-
-    def is_empty(self):
-        return self.top is None
-
-    def print_stack(self):
-        current_node = self.top
-        while current_node:
-            print(current_node.data)
-            current_node = current_node.next
-
-    def size(self):
-        current_node = self.top
-        count = 0
-        while current_node:
-            count += 1
-            current_node = current_node.next
-        return count
-
-    def merge(self, list1, list2):
-        data1 = list1
-        data2 = list2
-        merged_stack = []
-
-        current_node = data1.top
-        while current_node:
-            merged_stack.append(current_node.data)
-            current_node = current_node.next
-
-        current_node = data2.top
-        while current_node:
-            merged_stack.append(current_node.data)
-            current_node = current_node.next
-
-        merged_stack.sort()
-        for i in merged_stack:
-            self.push(i)
-
-        return self
-
-
-stack = Stack()
-
-
 @app.route("/matt")
 def matt():
     return render_template("Matt/mattindex.html")
@@ -823,59 +756,109 @@ def matttriangle():
     return render_template("Matt/mattAreaOfTriangle.html", result=result)
 
 
-@app.route("/mattmerge_stack", methods=["GET", "POST"])
-def mattmerge_stack():
-    if request.method == "POST":
-        stack1_input = request.form.get("stack1")
-        stack2_input = request.form.get("stack2")
+stacks = {}
+current_stack = None
+popped_data = None
+top_data = None
+stack_size = None
 
-        # Convert comma-separated input strings to lists
-        stack1_elements = stack1_input.split(",")
-        stack2_elements = stack2_input.split()
 
-        # Push elements onto stack1
-        for element in stack1_elements:
-            stack.push(element)
+@app.route("/mattstack_page")
+def mattstack_page():
+    return render_template(
+        "Matt/mattmergestack.html",
+        stacks=stacks,
+        current_stack=current_stack,
+        popped_data=popped_data,
+        top_data=top_data,
+        stack_size=stack_size,
+    )
 
-        # Push elements onto stack2
-        for element in stack2_elements:
-            stack.push(element)
 
-        # Merge stacks
-        merged_stack = Stack()
-        merged_stack.merge(stack, stack)
+@app.route("/mattstack")
+def mattredirect_to_stack():
+    return redirect(url_for("mattstack_page"))
 
-        # Get the merged stack as a list
-        merged_stack_data = []
-        current_node = merged_stack.top
-        while current_node:
-            merged_stack_data.append(current_node.data)
-            current_node = current_node.next
 
-        return render_template("Matt/mattMergingStack.html", result=merged_stack_data)
-
-    return render_template("Matt/mattMergingStack.html", result=None)
+@app.route("/mattpush", methods=["POST"])
+def mattpush():
+    data = request.form["data"]
+    if current_stack:
+        stacks[current_stack].push(data)
+    return redirect(url_for("mattstack_page"))
 
 
 @app.route("/mattpop")
 def mattpop():
-    popped_item = stack.pop()
-    return render_template("Matt/mattpop_peek.html", operation="Pop", result=popped_item)
+    global popped_data
+    popped_data = None
+    if current_stack:
+        popped_data = stacks[current_stack].pop()
+    return redirect(url_for("mattstack_page"))
 
 
 @app.route("/mattpeek")
 def mattpeek():
-    top_item = stack.peek()
-    return render_template("Matt/mattpop_peek.html", operation="Peek", result=top_item)
+    global top_data
+    top_data = None
+    if current_stack:
+        top_data = stacks[current_stack].peek()
+    return redirect(url_for("mattstack_page"))
 
 
-@app.route("/mattreset", methods=["POST"])
-def mattreset():
-    # Clear the data in the list and reset the stack
-    stack.top = None
+@app.route("/mattclear")
+def mattclear():
+    if current_stack:
+        stacks[current_stack].clear_stack()
+    return redirect(url_for("mattstack_page"))
 
-    # Redirect back to the merge_stack page
-    return render_template("Matt/mattMergingStack.html", result=None)
+
+@app.route("/mattsize")
+def mattsize():
+    global stack_size
+    stack_size = None
+    if current_stack:
+        stack_size = stacks[current_stack].size()
+    return redirect(url_for("mattstack_page"))
+
+
+@app.route("/mattcreate_new_stack")
+def mattcreate_new_stack():
+    global current_stack
+    current_stack = None
+    new_stack_name = f"stack-{len(stacks) + 1}"
+    stacks[new_stack_name] = Stack()
+    return redirect(url_for("mattstack_page"))
+
+
+@app.route("/mattselect_stack", methods=["POST"])
+def mattselect_stack():
+    global current_stack, popped_data, top_data, stack_size
+    current_stack = request.form["edit_stack"]
+    popped_data = None
+    top_data = None
+    stack_size = None
+    return redirect(url_for("mattstack_page"))
+
+
+@app.route("/mattmerged_stack", methods=["POST"])
+def mattmix():
+    global current_stack, popped_data, top_data, stack_size
+    stack_1_name = request.form["merge_stack_1"]
+    stack_2_name = request.form["merge_stack_2"]
+
+    if stack_1_name in stacks and stack_2_name in stacks:
+        merged_stack_name = f"merged-stack-{len(stacks) + 1}"
+        stacks[merged_stack_name] = Stack()
+        stacks[merged_stack_name].merged_stack(
+            stacks[stack_1_name], stacks[stack_2_name]
+        )
+        current_stack = merged_stack_name
+        popped_data = None
+        top_data = None
+        stack_size = None
+
+    return redirect(url_for("mattstack_page"))
 
 
 @app.route("/mattcontacts")
@@ -1054,6 +1037,23 @@ def hashT():
             return render_template('Website_html/hashT.html', error=str(e))
 
     return render_template('Website_html/hashT.html', table_html=None)
+
+@app.route('/pathf', methods=['GET', 'POST'])
+def pathf():
+    stations_info = mrt_graph.display_stations()
+
+
+    if request.method == 'POST':
+        start_station = request.form['start_station']   
+        end_station = request.form['end_station']
+
+        shortest_path_length, shortest_path_stations = mrt_graph.shortest_path(start_station, end_station)
+        output = f"The shortest path from {start_station} to {end_station} is {shortest_path_length} stations:<br>"
+        result = f" -> ".join(shortest_path_stations)
+
+        return render_template('Website_html/pathf.html', stations_info=stations_info, result=result, output=output)
+    
+    return render_template('Website_html/pathf.html', stations_info=stations_info)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -15,7 +15,7 @@ body {
 .bg {
     background: url('static/mattbackground.jpg') no-repeat;
     width: 100%;
-    height: 100vh;
+    height: 92.4vh;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -32,7 +32,7 @@ body {
 
 header {
     background-color: #49b8a5;
-    height: 75px;
+    height: 60px;
     overflow: hidden;
 }
 
@@ -143,6 +143,8 @@ header {
 
 .profile-info p {
     margin-bottom: 10px;
+    background-color: rgb(67, 99, 88);
+    border-radius: 8px;    
 }
 
 .profile-add {
@@ -184,6 +186,8 @@ header {
     text-decoration: none;
     color: #ecf5ff;
     font-weight: bold;
+    background-color: rgb(67, 99, 88);
+    border-radius: 8px;    
 }
 
 .proj-content li a:hover {
@@ -214,6 +218,8 @@ header {
     padding: 5px;
     font-size: 16px;
     margin-bottom: 10px;
+    background-color: rgb(67, 99, 88);
+    border-radius: 8px;    
 }
 
 .contacts em {
