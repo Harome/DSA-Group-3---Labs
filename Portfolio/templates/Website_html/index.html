@@ -7,36 +7,26 @@
     <title>Group 3</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='GroupCSS/indexstyle.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='GroupCSS/responsive.css')}}">
-    <!-- <link rel="shortcut icon" type="image/jpg" href="./img/apple-logo.png"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
         crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
-    
+
 <body>
     <header>
         <div class="header-wrapper">
             <span class="menu-logo hp-viewport fas fa-ellipsis-h"></span>
             <ul class="header-list">
 
-                <li class="header-content hp-viewport apple-header"><a href="/"><img class="logo" src="{{ url_for('static', filename='Group_pics/groupbg.jpg')}}"></a></li>
+                <li class="header-content hp-viewport apple-header"><a href="/"><img class="logo" src="/"></a></li>
 
                 <li><a href="/">Home</a></li>
                 <li><a href="/works">Projects</a></li>
                 <li><a href="/profile">Profile</a></li>
 
                 <li class="header-content hp-viewport-hide fa-searchs"><a href="#" class="fas fa-search"></a></li>
-                <li>
-                    <div class="search search-container">
-                        <div class="search-icon" id="searchIcon"><i class="fas fa-search"></i></div>
-                        <div class="search-dropdown" id="searchDropdown">
-                            <input type="text" placeholder="Search...">
-                            <button>Search</button>
-                        </div>
-                    </div>
-                </li>
             </ul>
         </div>
     </header>
@@ -81,84 +71,73 @@
         <ul class="flex-list">
             <li class="li1 content">
 
-                <div class="theme-dark container-main"
+                <div class="theme-light container-main"
                     onclick="location.href='/sechy'" style="cursor: pointer;">
-                    <div class="unit-copy-wrapper">
-                        <img class="sechy" src="" alt="Search Algorithm">
+                    <div class="unit-copy-wrapper"><br><br>
                         <h2 class="headline"> Search Algorithm </h2>
                     </div>
-                    <div class="cta-links">
-                        <a href="/sechy" class="learn-more-link"> Info about the program </a>
-                        <br><a href="/sechy" class="use-link"> Use </a>
+                    <div class="project-image1">
+                        <p>The term "Search Algorithm" generally refers to algorithms designed to locate specific items or information within a
+                        dataset. The type of search algorithm used can vary depending on the nature of the data and the specific requirements of
+                        the search.
                     </div>
                 </div>
             </li>
 
             <li class="li2 content">
 
-                <div class="theme-light container-main" onClick="location.href='/gstacks';"
+                <div class="theme-dark container-main" onClick="location.href='/gstacks';"
                     style="cursor: pointer;">
-                    <div class="unit-copy-wrapper">
-                        <img class="" src="" alt="Infix&PostfixStacks">
-                        <h2 class="headline">Infix&PostfixStacks</h2>
+                    <div class="unit-copy-wrapper"><br><br>
+                        <h2 class="headline">Infix to Postfix Stacks</h2>
                     </div>
-                    <div class="cta-links">
-                        <a href="" class="learn-more-link"> Info about the Program </a>
-                        <br><a href="/gstacks" class="use-link"> Use ></a>
+                    <div class="project-image2">
+                        <p>An infix to postfix converter uses a stack to transform mathematical expressions efficiently. It iterates through each
+                        token, appending operands to the output and managing operators and parentheses using the stack. This streamlined
+                        algorithm ensures a systematic conversion for efficient expression evaluation.
                     </div>
                 </div>
             </li>
 
             <li class="li3 content">
 
-                <div class="theme-dark container-main" onclick="location.href='/qqq'"
+                <div class="theme-dark container-main" onclick="location.href='/qqq' "
                     style="cursor: pointer;">
-                    <div class="unit-copy-wrapper">
-                        <img class="mackbook-air-logo" src="" alt="Queue&Dequeue"
-                            style="width: 35%; margin-top: 55px;">
+                    <div class="unit-copy-wrapper"><br><br>
                         <h2 class="headline">Queue and Dequeue</h2>
                     </div>
-                    <div class="cta-links">
-                        <a href="/qqq" class="learn-more-link">Info about the program </a>
-                        <br><a href="/qqq" class="use-link"> Use </a>
-                </div>
+                    <div class="project-image3">
+                        <p>A queue and dequeue (double-ended queue) are fundamental data structures used to organize and manage collections of elements in a linear order. A queue follows the First-In-First-Out (FIFO) principle, meaning that the first element added is the first one to be removed. It operates with enqueue (to add an element to the back) and dequeue (to remove an element from the front) operations.</p>
+                    </div>
             </li>
 
             <li class="li4 content">
-
                 <div class="theme-light container-main" onclick="location.href='/hashT'"
                     style="cursor: pointer;">
-                    <div class="unit-copy-wrapper">
-                        <img src="" alt="" style="width: 30%; margin-top: 20px;">
+                    <div class="unit-copy-wrapper"><br><br>
                         <h2 class="headline">Hash Table</h2>
                     </div>
-                    <div class="cta-links">
-                        <a href="/hashT" class="learn-more-link"> Info about the Program</a>
-                        <a href="/hashT" class="use-link"> Use </a>
+                    <div class="project-image4">
+                        <p>A hash table is a widely used data structure that facilitates efficient data retrieval and storage. It utilizes a
+                        technique called hashing, where a function (hash function) transforms keys into indices of an array. This allows for
+                        quick lookup and insertion of values associated with those keys. The hash function should ideally distribute keys evenly
+                        across the array to minimize collisions, where different keys produce the same hash value.
                     </div>
                 </div>
             </li>
             <li class="li5 content">
 
-                <div class="theme-light container-main" onclick="location.href='https://www.apple.com/apple-card/'"
+                <div class="theme-light container-main" onclick="location.href='/pathf'"
                     style="cursor: pointer;">
-                    <div class="unit-copy-wrapper">
-                        <img src="./img/apple-card-logo.png" alt="apple-card-logo"
-                            style="width: 20%; margin-top: 20px;">
-                        <h2 style="margin-bottom: 10px; font-size: 19px; color: #1D1D1F">
-                            Get 3% Daily Cash back on<br>
-                            purchases from Apple when<br>
-                            you use Apple Card
-                        </h2>
-                    </div>
-                    <div class="cta-links">
-                        <a href="">Learn more ></a>
-                    </div>
-                    <div class="unit-image">
-                        <figure style="margin-top: 0;">
-                            <img src="./img/apple-card.png" alt="apple-card" style="width: 80%;">
-                        </figure>
-                    </div>
+                    <div class="unit-copy-wrapper"><br><br>
+                        <h2 class="headline"> Graph Search </h2>
+                        </div>
+                        <div class="project-image5">
+                            <p>Graph search refers to the process of exploring or traversing the vertices and edges of a graph data structure to find
+                            specific information or solve problems. A graph is a collection of nodes (vertices) and connections (edges) between
+                            them. Graph search algorithms are fundamental in various computer science applications, including pathfinding, network
+                            analysis, and artificial intelligence.
+                        </div>
                 </div>
             </li>
 
@@ -236,47 +215,25 @@
         <hr style="width: 70%;">
         <div class="footer-container">
             <div class="footer-list">
-                <h3>Shop and Learn</h3>
-                <p><a href="https://www.apple.com/mac">Mac</a></p>
-                <p><a href="https://www.apple.com/ipad">iPad</a></p>
-                <p><a href="https://www.apple.com/iphone">iPhone</a></p>
-                <p><a href="https://www.apple.com/watch">Watch</a></p>
-                <p><a href="https://www.apple.com/tv">TV</a></p>
+                <h3> Programs </h3>
+                <p><a href="/sechy"> Search Algorithm </a></p>
+                <p><a href="/gstacks"> Infix to Postfix </a></p>
+                <p><a href="/qqq"> Queue and Dequeue </a></p>
+                <p><a href="/hashT"> Hash Table </a></p>
+                <p><a href="/pathf"> Graph Search </a></p>
                 <p><a href="https://www.apple.com/music">Music</a></p>
-                <p><a href="https://www.apple.com/airpods">AirPods</a></p>
-                <p><a href="https://www.apple.com/homepod">HomePod</a></p>
-                <p><a href="https://www.apple.com/ipad-touch">iPod touch</a></p>
-                <p><a href="https://www.apple.com/shop/accessories/all">Accessories</a></p>
-                <p><a href="https://www.apple.com/shop/gift-cards">Gift Cards</a></p>
+
             </div>
             <div class="footer-list">
-                <h3>Services</h3>
-                <p><a href="https://www.apple.com/apple-music">Apple Music</a></p>
-                <p><a href="https://www.apple.com/apple-tv-plus">Apple TV+</a></p>
-                <p><a href="https://www.apple.com/apple-fitnes-plus">Apple Fitness+</a></p>
-                <p><a href="https://www.apple.com/apple-news">Apple News+</a></p>
-                <p><a href="https://www.apple.com/apple-arcade">Apple Arcade</a></p>
-                <p><a href="https://www.apple.com/icloud">iCloud</a></p>
-                <p><a href="https://www.apple.com/apple-one">Apple One</a></p>
-                <p><a href="https://www.apple.com/apple-card">Apple Card</a></p>
-                <p><a href="https://www.apple.com/apple-books">Apple Books</a></p>
-                <p><a href="https://www.apple.com/app-store">App Store</a></p>
-            </div>
-            <div class="footer-list">
-                <h3>Apple Store</h3>
-                <p><a href="https://www.apple.com/retail">Find a Store</a></p>
-                <p><a href="https://www.apple.com/shop">Shop Online</a></p>
-                <p><a href="https://www.apple.com/retail/geniusbar">Genius Bar</a></p>
-                <p><a href="https://www.apple.com/today">Today at Apple</a></p>
-                <p><a href="https://www.apple.com/today/camp">Apple Camp</a></p>
-                <p><a href="https://apps.apple.com/app/apple-store/id375380948">Apple Store App</a></p>
-                <p><a href="https://www.apple.com/shop/refurbished">Refurbished and Clearance</a></p>
-                <p><a href="https://www.apple.com/shop/browse/financing">Financing</a></p>
-                <p><a href="https://www.apple.com/shop/trade-in">Apple Trade In</a></p>
-                <p><a
-                        href="https://secure4.store.apple.com/shop/signIn/orders?r=SCKFUHKXACXX7DYHYT9JT7JJTAPAXHFKH&s=aHR0cHM6Ly9zZWN1cmU0LnN0b3JlLmFwcGxlLmNvbS9zaG9wL29yZGVyL2xpc3R8MWFvc2MyMzE1ZDYzNTE4MGIwZTg4MWE3YzIwOWJjMTVkMjNlMzI4ZTBkN2Y">Order
-                        Status</a></p>
-                <p><a href="https://www.apple.com/shop/help">Shopping Help</a></p>
+                <h3>Contributors </h3>
+                <p><a href="facebook.com/darklord1590" target = "_blank">Harold Cruz</a></p>
+                <p><a href="https://www.facebook.com/uyonihamp.ANN.ika" target = "_blank">Margarette Conception</a></p>
+                <p><a href="https://www.facebook.com/aaronpaul.castillo/" target = "_blank">Aaron Castillo</a></p>
+                <p><a href="- facebook.com/rnlyndavid13" target = "_blank">Ronalyn David</a></p>
+                <p><a href="https://www.facebook.com/michael.johan19?mibextid=2JQ9oc" target = "_blank">Michael Gregorio</a></p>
+                <p><a href="https://www.facebook.com/timothy.malto.90/" target = "_blank">Timothy Malto</a></p>
+                <p><a href="https://www.facebook.com/charles.nudalo.7" target = "_blank">Charles Nudalo</a></p>
+                <p><a href="https://www.facebook.com/jayveeiggo983.iggo" target = "_blank">Jayvee Iggo</a></p>
             </div>
         </div>
     </footer>

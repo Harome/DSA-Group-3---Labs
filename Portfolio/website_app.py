@@ -653,8 +653,10 @@ class Stack:
         if self.head is None:
             return None
         else:
+            new_head = self.head.next
+            self.head.next = None
             value = self.head.data
-            self.head = self.head.next
+            self.head = new_head
             return value
 
     def peek(self):
@@ -674,13 +676,15 @@ stack_instance = Stack()
 
 @app.route('/marga_stack_index')
 def marga_stack_index():
-    return render_template('marga/stackk.html', stack_instance=stack_instance)
+    stack_content = list(stack_instance)
+    return render_template('marga/stackk.html', stack=stack_content)
 
 @app.route('/marga_push', methods=['POST'])
 def marga_push():
-    new_item = request.form.get('new_item', '')
-    stack_instance.push(new_item)
-    return render_template('marga/stackk.html', stack_instance=stack_instance)
+    info = request.form.get('stackInfo', '')  # assuming 'stackInfo' is the name of the form field
+    if info:
+        stack_instance.push(info)
+    return redirect('/marga_stack_index')
 
 @app.route('/marga_pop')
 def marga_pop():
@@ -690,7 +694,8 @@ def marga_pop():
 @app.route('/marga_peek')
 def marga_peek():
     peek_value = stack_instance.peek()
-    return render_template('marga/stackk.html', peek_value=peek_value, stack_instance=stack_instance)
+    return render_template('marga/stackk.html', peek_value=peek_value)
+
 
 
 #Timothy

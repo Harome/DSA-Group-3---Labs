@@ -108,6 +108,7 @@ mrt3_connections = [
 
 mrt_graph.add_connection("Doroteo Jose", "Recto", weight=1)  
 mrt_graph.add_connection("Araneta Center-Cubao:LRT-2", "Araneta Center-Cubao:MRT-3", weight=1) 
+mrt_graph.add_connection("Edsa", "Taft Avenue", weight=1) 
 
 for connection in lrt1_connections + lrt2_connections + mrt3_connections:
     mrt_graph.add_connection(connection[0], connection[1])

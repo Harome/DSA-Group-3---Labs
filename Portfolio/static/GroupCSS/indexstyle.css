@@ -46,44 +46,6 @@ header {
     color: #f5f5f7;
 }
 
-.logo{
-    width: 25px;
-}
-
-/* search btn */
-.search-container {
-    position: relative;
-}
-
-.search-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 200px;
-    padding: 10px;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.search-dropdown input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-}
-
-.search-dropdown button {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-}
-
-.search-dropdown button:hover {
-    background-color: #555;
-}
-
 .contents {
     background-color: white;
 }
@@ -123,7 +85,7 @@ header {
 
 .profile {
     height: 90%;
-    background-image: url(prof.png);
+    background-image: url(P.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -160,7 +122,7 @@ header {
 
 .group-3-1 {
     height: 100%;
-    background-image: url(2ndpart.png);
+    background-image: url(W.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -248,22 +210,111 @@ ul {
   .cta-links a:hover{
       text-decoration: underline;
   }
-  
-  /* hover zoom products animation */
-  .unit-image figure img{
-      transition: transform .2s;
+.project-image1 {
+    position: relative;
+    text-align: center;
+    height: 100%;
+    background-image: url(search-algo.png);
+    background-size: 50%;
+    background-position:top;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
   }
-  .unit-image figure img:hover{
-      transform: scale(1.05);
+.project-image1 :hover{
+      transform: scale(1.1);
   }
+.project-image1 p {
+    position: absolute;
+    margin-top: 400px;
+    padding: 40px;
+}
   .sechy{
     width: 25%;
 }
-/* main */
 
+.project-image2 {
+     position: relative;
+     text-align: center;
+     height: 100%;
+     background-image: url(gstacks.png);
+     background-size: 50%;
+     background-position: top;
+     background-repeat: no-repeat;
+     transition: transform 0.3s ease;
+ }
 
-  /* css untuk footer */
+.project-image2 :hover {
+     transform: scale(1.1);
+ }
 
+.project-image2 p {
+    position: absolute;
+    margin-top: 250px;
+    padding: 40px;
+}
+
+.project-image3 {
+     position: relative;
+     text-align: center;
+     height: 100%;
+     background-image: url(queue.png);
+     background-size: 50%;
+     background-position: top;
+     background-repeat: no-repeat;
+     transition: transform 0.3s ease;
+}
+
+.project-image3 :hover {
+    transform: scale(1.1);
+}
+
+.project-image3 p {
+    position: absolute;
+    margin-top: 470px;
+    padding: 40px;
+}
+
+.project-image4 {
+    position: relative;
+    text-align: center;
+    height: 100%;
+    background-image: url(hash-table.png);
+    background-size: 50%;
+    background-position: top;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+}
+
+.project-image4 :hover {
+    transform: scale(1.1);
+}
+
+.project-image4 p {
+    position: absolute;
+    margin-top: 450px;
+    padding: 40px;
+}
+
+.project-image5 {
+    position: relative;
+    text-align: center;
+    height: 100%;
+    background-image: url(graph-search.png);
+    background-size: 75%;
+    background-position: top;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+}
+
+.project-image5 :hover {
+    transform: scale(1.1);
+}
+
+.project-image5 p {
+    position: absolute;
+    margin-top: 350px;
+    padding: 40px;
+}
   footer {
       background-color: #f5f5f7;
       padding: 40px;
