@@ -32,7 +32,6 @@ header {
     display: flex;
     justify-content: space-around;
     padding-top: 0;    
-
 }
 .header-list li{
     margin: 0;
@@ -59,7 +58,7 @@ header {
 
 .group-3 {
     height: 100%;
-    background-image: url(bgfinal.png);
+    background-image: url("../../static/Group_pics/bgfinal.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -85,7 +84,7 @@ header {
 
 .profile {
     height: 90%;
-    background-image: url(P.jpg);
+    background-image: url("../../static/Group_pics/prof.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -122,7 +121,7 @@ header {
 
 .group-3-1 {
     height: 100%;
-    background-image: url(W.jpg);
+    background-image: url("../../static/Group_pics/2ndpart.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -214,7 +213,7 @@ ul {
     position: relative;
     text-align: center;
     height: 100%;
-    background-image: url(search-algo.png);
+    background-image: url("../../static/Group_pics/search-algo.png");
     background-size: 50%;
     background-position:top;
     background-repeat: no-repeat;
@@ -236,7 +235,7 @@ ul {
      position: relative;
      text-align: center;
      height: 100%;
-     background-image: url(gstacks.png);
+     background-image: url("../../static/Group_pics/gstacks.png");
      background-size: 50%;
      background-position: top;
      background-repeat: no-repeat;
@@ -257,7 +256,7 @@ ul {
      position: relative;
      text-align: center;
      height: 100%;
-     background-image: url(queue.png);
+     background-image: url("../../static/Group_pics/queue.png");
      background-size: 50%;
      background-position: top;
      background-repeat: no-repeat;
@@ -278,7 +277,7 @@ ul {
     position: relative;
     text-align: center;
     height: 100%;
-    background-image: url(hash-table.png);
+    background-image: url("../../static/Group_pics/hash-table.png");
     background-size: 50%;
     background-position: top;
     background-repeat: no-repeat;
@@ -299,7 +298,7 @@ ul {
     position: relative;
     text-align: center;
     height: 100%;
-    background-image: url(graph-search.png);
+    background-image: url("../../static/Group_pics/graph-search.png");
     background-size: 75%;
     background-position: top;
     background-repeat: no-repeat;
