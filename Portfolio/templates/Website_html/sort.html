@@ -4,75 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting Algorithm Visualization</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-            text-align: center;
-        }
-        th, td {
-            padding: 10px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='GroupCSS/style.css') }}">
+    <header class="header">
+        {% include 'Website_html/navbar.html' %}
+    </header>
 </head>
 <body>
-    <h1>Sorting Algorithm Visualization</h1>
-    
-    <form action="/sorting" method="post">
-        <label for="range">Select the range:</label>
-        <select name="range" required>
-            <option value="10">1-10</option>
-            <option value="100">1-100</option>
-            <option value="1000">1-1000</option>
-        </select>
+    <div class="sort-container">
+        <h1>Sorting Algorithm</h1>
         
-        <label for="algorithm">Choose sorting algorithm:</label>
-        <select name="algorithm" required>
-            <option value="bubble">Bubble Sort</option>
-            <option value="selection">Selection Sort</option>
-            <option value="insertion">Insertion Sort</option>
-            <option value="merge">Merge Sort</option>
-            <option value="quick">Quick Sort</option>
-        </select>
-        
-        <button type="submit">Sort</button>
-    </form>
-
-    {% if data %}
-        <h2>Original Data:</h2>
-        <table>
-            <tr>
-                {% for value in data %}
-                    <td>{{ value }}</td>
-                {% endfor %}
-            </tr>
-        </table>
-
-        <h2>Sorted Data:</h2>
-        <table>
-            <tr>
-                {% for value in sorted_data %}
-                    <td>{{ value }}</td>
-                {% endfor %}
-            </tr>
-        </table>
-
-        <h2>Execution Time:</h2>
-        <p>{{ execution_time }} seconds</p>
-    {% endif %}
+        <form action="/sorting" id="form" method="post">
+            <label for="range">Select the range:</label>
+            <select name="range" required>
+                <option value="10">1-10</option>
+                <option value="100">1-100</option>
+                <option value="1000">1-1000</option>
+            </select>
+            
+            <label for="algorithm">Choose sorting algorithm:</label>
+            <select name="algorithm" required>
+                <option value="bubble">Bubble Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="quick">Quick Sort</option>
+            </select>
+            
+            <button type="submit">Sort</button>
+        </form>
+        <div class="sort">
+            <div class="sort-orig-table">
+                {% if data %}
+                    <h2>Original Data:</h2>
+                    <table>
+                        <tr>
+                            {% for value in data %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+            </div>
+            <div class="sort-sorted-table">
+                    <h2>Sorted Data:</h2>
+                    <table>
+                        <tr>
+                            {% for value in sorted_data %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+            </div>
+        </div>
+        <div class="sort-time">
+            <h2>Execution Time:</h2>
+            <p>{{ execution_time }} seconds</p>
+            {% endif %}
+        </div>
+    </div>
 </body>
 </html>

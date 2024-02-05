@@ -5,6 +5,9 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body{
+    overflow-y: scroll;
+}
 ::selection {
     color: #fff;
     background: #B9D2B1;
@@ -438,7 +441,7 @@ h2 {
 }
 
 /* Graph Search */
-
+/* 
 .graph-search-container {
     position: absolute;
     top: 20%;
@@ -500,5 +503,149 @@ h2 {
 @media only screen and (max-width: 600px) {
     .graph-search-container {
         margin: 20px;
+    }
+} */
+
+
+/* Sort */
+.sort-container{
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 90%;
+    height: 80%;
+    transform: translate(-50%, -30%);
+    color: #07374a;
+    text-align: left;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(34, 33, 33);
+    margin-top: 2.5rem;
+
+}
+
+.sort-container #form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sort-container h1 {
+    color: #07374a;
+    padding-bottom: 1rem;
+}
+
+.sort-container form {
+    margin-bottom: 20px;
+}
+
+.sort-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.sort-container select,
+.sort-container button {
+    padding: 10px;
+}
+
+.sort-container button {
+    background-color: #07374a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sort-container button:hover {
+    background-color: #07374a;
+}
+
+.sort {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sort-orig-table,
+.sort-sorted-table {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    overflow-y: scroll;
+    max-height: 400px;
+}
+
+.sort-orig-table table,
+.sort-sorted-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.sort-orig-table table,
+.sort-sorted-table table,
+.sort-orig-table th,
+.sort-sorted-table th,
+.sort-orig-table td,
+.sort-sorted-table td {
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.sort-orig-table th,
+.sort-sorted-table th,
+.sort-orig-table td,
+.sort-sorted-table td {
+    padding: 5px;
+    width: 10%;
+}
+
+.sort-orig-table th,
+.sort-sorted-table th {
+    background-color: #f2f2f2;
+}
+
+.sort tr{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.sort-time {
+    text-align: center;
+    position: fixed;
+    bottom: 0;    
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    flex-direction: column;
+    overflow: hidden;
+    margin-left: 3rem;
+    padding-bottom: 1rem;
+}
+
+.sort-time h2 {
+    color: #07374a;
+}
+
+/* Media Query for smaller screens */
+@media only screen and (max-width: 600px) {
+
+    .sort-container select,
+    .sort-container button {
+        width: 100%;
+    }
+
+    .sort-orig-table table,
+    .sort-sorted-table table,
+    .sort-orig-table th,
+    .sort-sorted-table th,
+    .sort-orig-table td,
+    .sort-sorted-table td {
+        width: 100%;
     }
 }

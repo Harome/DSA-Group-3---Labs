@@ -18,38 +18,37 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-}
+  }
 
 ul, li, ol {
     list-style: none;
-}
+    }
 
-a {
+    a {
     text-decoration: none;
 }
-
-body, main {
+body, main{
     margin: 0 auto;
     font-family: 'Roboto', 'Helvetica', Arial, sans-serif;
     background-color: rgb(255, 255, 255);
 }
-
-header{
-    position: relative;
-    top: 0;
+header {
+    position: fixed;
+    top:0;
     height: 52px;
     width: 100%;
     color: rgba(255, 253, 253, 0.87);
     background-color: rgba(0,0,0,0.92);
     z-index: 10;
-}
+  }
+
+
 
 .header-list{
     display: flex;
     justify-content: space-around;
     padding-top: 0;    
 }
-
 .header-list li{
     margin: 0;
     height: 50px;
@@ -66,13 +65,17 @@ header{
     background-color: white;
 }
 
+.logo{
+    height: 50px;
+    aspect-ratio: 1/1;
+}
 </style>
 <body>
     <header>
         <div class="header-wrapper">    
             <ul class="header-list">
                 <li class="header-content hp-viewport apple-header"><a href="/"><img class="logo"
-                src="../../static/Group_pics/p8.jpg"></a></li>
+                src="../../static/Group_pics/logo.png"></a></li>
                 <li><a href="/">Home</a></li>
                 <li><a href="/works">Projects</a></li>
                 <li><a href="/profile">Profile</a></li>

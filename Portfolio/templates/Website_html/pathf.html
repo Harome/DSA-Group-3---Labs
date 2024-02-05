@@ -1,37 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station Selection</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='GroupCSS/style.css') }}">
     <header class="header">
         {% include 'Website_html/navbar.html' %}
     </header>
-    <title>Train System</title>
+    <style>
+        .station-form {
+            display: none;
+        }
+
+        .show-form {
+            display: block;
+        }
+
+        #submitBtn {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="graph-search-container">
-        <h1>Train System</h1>
-        <p>{{ stations_info | safe }}</p>
-        
-        <form method="post" action="pathf">
-            <label for="start_station">Start Station:</label>
-            <input type="text" id="start_station" name="start_station" required>
 
-            <label for="end_station">End Station:</label>
-            <input type="text" id="end_station" name="end_station" required>
+<div class="graph-search-container">
+<form id="startForm" onsubmit="submitForm(); return false;">
+    <label for="startCategory">Select Starting LRT/MRT Category:</label>
+    <select id="startCategory" name="startCategory" onchange="toggleForms('start')">
+        <option value="LRT-1">LRT-1</option>
+        <option value="LRT-2">LRT-2</option>
+        <option value="MRT-3">MRT-3</option>
+    </select>
 
-            <button type="submit">Find Shortest Path</button>
-            <br>
-        </form>
+    <br>
 
-        {% if result %}
-            <p>{{ output | safe }}</p>
-        {% endif %}
-        {% if result %}
-            <p>{{ result | safe }}</p>
-        {% endif %}
+    <label for="startStation">Select Starting Station:</label>
+
+    <!-- Starting LRT-1 Form -->
+    <div id="startLrt1Form" class="station-form">
+        <select name="startStation">
+            <option value="Baclaran">Baclaran</option>
+            <option value="Edsa">Edsa</option>
+            <option value="Libertad">Libertad</option>
+            <option value="Gil Puyat">Gil Puyat</option>
+            <option value="Vito Cruz">Vito Cruz</option>
+            <option value="Quirino Avenue">Quirino Avenue</option>
+            <option value="Pedro Gil">Pedro Gil</option>
+            <option value="UN Avenue">UN Avenue</option>
+            <option value="Central Terminal">Central Terminal</option>
+            <option value="Carriedo">Carriedo</option>
+            <option value="Doroteo Jose">Doroteo Jose</option>
+            <option value="Bambang">Bambang</option>
+            <option value="Tayuman">Tayuman</option>
+            <option value="Blumentritt">Blumentritt</option>
+            <option value="Abad Santos">Abad Santos</option>
+            <option value="R. Papa">R. Papa</option>
+            <option value="5th Avenue">5th Avenue</option>
+            <option value="Monumento">Monumento</option>
+            <option value="Balintawak">Balintawak</option>
+            <option value="Roosevelt">Roosevelt</option>
+        </select>
     </div>
+
+    <!-- Starting LRT-2 Form -->
+    <div id="startLrt2Form" class="station-form">
+        <select name="startStation">
+            <option value="Recto">Recto</option>
+            <option value="Legarda">Legarda</option>
+            <option value="Pureza">Pureza</option>
+            <option value="V. Mapa">V. Mapa</option>
+            <option value="J. Ruiz">J. Ruiz</option>
+            <option value="Gilmore">Gilmore</option>
+            <option value="Betty Go-Belmonte">Betty Go-Belmonte</option>
+            <option value="Araneta Center-Cubao:LRT-2">Araneta Center-Cubao:LRT-2</option>
+            <option value="Anonas">Anonas</option>
+            <option value="Katipunan">Katipunan</option>
+            <option value="Santolan">Santolan</option>
+        </select>
+    </div>
+
+    <!-- Starting MRT-3 Form -->
+    <div id="startMrt3Form" class="station-form">
+        <select name="startStation">
+            <option value="North Avenue">North Avenue</option>
+            <option value="Quezon Avenue">Quezon Avenue</option>
+            <option value="GMA-Kamuning">GMA-Kamuning</option>
+            <option value="Araneta Center-Cubao:MRT-3">Araneta Center-Cubao:MRT-3</option>
+            <option value="Santolan-Annapolis">Santolan-Annapolis</option>
+            <option value="Ortigas Avenue">Ortigas Avenue</option>
+            <option value="Shaw Boulevard">Shaw Boulevard</option>
+            <option value="Boni Avenue">Boni Avenue</option>
+            <option value="Guadalupe">Guadalupe</option>
+            <option value="Buendia">Buendia</option>
+            <option value="Ayala">Ayala</option>
+            <option value="Magallanes">Magallanes</option>
+            <option value="Taft Avenue">Taft Avenue</option>
+        </select>
+    </div>
+
+    <br>
+
+<!-- Arrival Point Form -->
+<form id="arrivalForm" onsubmit="submitForm(); return false;">
+    <label for="arrivalCategory">Select Arrival LRT/MRT Category:</label>
+    <select id="arrivalCategory" name="arrivalCategory" onchange="toggleForms('arrival')">
+        <option value="LRT-1">LRT-1</option>
+        <option value="LRT-2">LRT-2</option>
+        <option value="MRT-3">MRT-3</option>
+    </select>
+
+    <br>
+
+    <label for="arrivalStation">Select Arrival Station:</label>
+
+    <!-- Arrival LRT-1 Form -->
+    <div id="arrivalLrt1Form" class="station-form">
+        <select name="arrivalStation">
+            <option value="Baclaran">Baclaran</option>
+            <option value="Edsa">Edsa</option>
+            <option value="Libertad">Libertad</option>
+            <option value="Gil Puyat">Gil Puyat</option>
+            <option value="Vito Cruz">Vito Cruz</option>
+            <option value="Quirino Avenue">Quirino Avenue</option>
+            <option value="Pedro Gil">Pedro Gil</option>
+            <option value="UN Avenue">UN Avenue</option>
+            <option value="Central Terminal">Central Terminal</option>
+            <option value="Carriedo">Carriedo</option>
+            <option value="Doroteo Jose">Doroteo Jose</option>
+            <option value="Bambang">Bambang</option>
+            <option value="Tayuman">Tayuman</option>
+            <option value="Blumentritt">Blumentritt</option>
+            <option value="Abad Santos">Abad Santos</option>
+            <option value="R. Papa">R. Papa</option>
+            <option value="5th Avenue">5th Avenue</option>
+            <option value="Monumento">Monumento</option>
+            <option value="Balintawak">Balintawak</option>
+            <option value="Roosevelt">Roosevelt</option>
+        </select>
+    </div>
+
+    <!-- Arrival LRT-2 Form -->
+    <div id="arrivalLrt2Form" class="station-form">
+        <select name="arrivalStation">
+            <option value="Recto">Recto</option>
+            <option value="Legarda">Legarda</option>
+            <option value="Pureza">Pureza</option>
+            <option value="V. Mapa">V. Mapa</option>
+            <option value="J. Ruiz">J. Ruiz</option>
+            <option value="Gilmore">Gilmore</option>
+            <option value="Betty Go-Belmonte">Betty Go-Belmonte</option>
+            <option value="Araneta Center-Cubao:LRT-2">Araneta Center-Cubao:LRT-2</option>
+            <option value="Anonas">Anonas</option>
+            <option value="Katipunan">Katipunan</option>
+            <option value="Santolan">Santolan</option>
+        </select>
+    </div>
+
+    <!-- Arrival MRT-3 Form -->
+    <div id="arrivalMrt3Form" class="station-form">
+        <select name="arrivalStation">
+            <option value="North Avenue">North Avenue</option>
+            <option value="Quezon Avenue">Quezon Avenue</option>
+            <option value="GMA-Kamuning">GMA-Kamuning</option>
+            <option value="Araneta Center-Cubao:MRT-3">Araneta Center-Cubao:MRT-3</option>
+            <option value="Santolan-Annapolis">Santolan-Annapolis</option>
+            <option value="Ortigas Avenue">Ortigas Avenue</option>
+            <option value="Shaw Boulevard">Shaw Boulevard</option>
+            <option value="Boni Avenue">Boni Avenue</option>
+            <option value="Guadalupe">Guadalupe</option>
+            <option value="Buendia">Buendia</option>
+            <option value="Ayala">Ayala</option>
+            <option value="Magallanes">Magallanes</option>
+            <option value="Taft Avenue">Taft Avenue</option>
+        </select>
+    </div>
+
+    <br>
+
+    <button id="arrivalSubmitBtn" type="submit">Find Shortest Path</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    function toggleForms(formType) {
+        var categoryDropdown;
+        var lrt1Form, lrt2Form, mrt3Form;
+        var submitBtn;
+
+        if (formType === 'start') {
+            categoryDropdown = document.getElementById('startCategory');
+            lrt1Form = document.getElementById('startLrt1Form');
+            lrt2Form = document.getElementById('startLrt2Form');
+            mrt3Form = document.getElementById('startMrt3Form');
+            submitBtn = document.getElementById('startSubmitBtn');
+        } else if (formType === 'arrival') {
+            categoryDropdown = document.getElementById('arrivalCategory');
+            lrt1Form = document.getElementById('arrivalLrt1Form');
+            lrt2Form = document.getElementById('arrivalLrt2Form');
+            mrt3Form = document.getElementById('arrivalMrt3Form');
+            submitBtn = document.getElementById('arrivalSubmitBtn');
+        }
+
+        var selectedCategory = categoryDropdown.options[categoryDropdown.selectedIndex].value;
+
+        lrt1Form.classList.remove('show-form');
+        lrt2Form.classList.remove('show-form');
+        mrt3Form.classList.remove('show-form');
+
+        if (selectedCategory === "LRT-1") {
+            lrt1Form.classList.add('show-form');
+        } else if (selectedCategory === "LRT-2") {
+            lrt2Form.classList.add('show-form');
+        } else if (selectedCategory === "MRT-3") {
+            mrt3Form.classList.add('show-form');
+        }
+
+        // Show/hide submit button
+        submitBtn.style.display = (selectedCategory !== "") ? "block" : "none";
+    }
+</script>
+
+</body>
+</html>
+
+    <br>
+
+    <button id="submitBtn" type="submit">Find Shortest Path</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    function toggleForms(formType) {
+    var categoryDropdown;
+    var lrt1Form, lrt2Form, mrt3Form;
+    var submitBtn;
+
+    if (formType === 'start') {
+        categoryDropdown = document.getElementById('startCategory');
+        lrt1Form = document.getElementById('startLrt1Form');
+        lrt2Form = document.getElementById('startLrt2Form');
+        mrt3Form = document.getElementById('startMrt3Form');
+        submitBtn = document.getElementById('startSubmitBtn');
+    } else if (formType === 'arrival') {
+        categoryDropdown = document.getElementById('arrivalCategory');
+        lrt1Form = document.getElementById('arrivalLrt1Form');
+        lrt2Form = document.getElementById('arrivalLrt2Form');
+        mrt3Form = document.getElementById('arrivalMrt3Form');
+        submitBtn = document.getElementById('arrivalSubmitBtn');
+    }
+
+    var selectedCategory = categoryDropdown.options[categoryDropdown.selectedIndex].value;
+
+    lrt1Form.classList.remove('show-form');
+    lrt2Form.classList.remove('show-form');
+    mrt3Form.classList.remove('show-form');
+
+    if (selectedCategory === "LRT-1") {
+        lrt1Form.classList.add('show-form');
+    } else if (selectedCategory === "LRT-2") {
+        lrt2Form.classList.add('show-form');
+    } else if (selectedCategory === "MRT-3") {
+        mrt3Form.classList.add('show-form');
+    }
+
+    // Show/hide submit button
+    submitBtn.style.display = (selectedCategory !== "") ? "block" : "none";
+}
+</script>
+
 </body>
 </html>

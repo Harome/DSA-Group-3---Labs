@@ -49,6 +49,10 @@ header {
     background-color: white;
 }
 
+.logo{
+    height: 50px;
+    aspect-ratio: 1/1;
+}
 
 .image-container .group-3 {
     height: 640px;
@@ -84,7 +88,7 @@ header {
 
 .profile {
     height: 90%;
-    background-image: url("../../static/Group_pics/prof.png");
+    background-image: url("../../static/Group_pics/P.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -121,7 +125,7 @@ header {
 
 .group-3-1 {
     height: 100%;
-    background-image: url("../../static/Group_pics/2ndpart.png");
+    background-image: url("../../static/Group_pics/W.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -235,7 +239,7 @@ ul {
      position: relative;
      text-align: center;
      height: 100%;
-     background-image: url("../../static/Group_pics/gstacks.png");
+     background-image: url("../../static/Group_pics/infix-postfix.png");
      background-size: 50%;
      background-position: top;
      background-repeat: no-repeat;
@@ -314,6 +318,29 @@ ul {
     margin-top: 350px;
     padding: 40px;
 }
+
+.project-image6 {
+    position: relative;
+    text-align: center;
+    height: 100%;
+    background-image: url("../../static/Group_pics/sort.png");
+    background-size: 75%;
+    background-position: top;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+}
+
+.project-image6 :hover {
+    transform: scale(1.1);
+}
+
+.project-image6 p {
+    position: absolute;
+    margin-top: 350px;
+    padding: 40px;
+}
+
+
   footer {
       background-color: #f5f5f7;
       padding: 40px;
@@ -339,6 +366,7 @@ ul {
   }
   .footer-container{
       display: flex;
+      padding: 1rem;
   }
   .footer-list {
       float: left;
