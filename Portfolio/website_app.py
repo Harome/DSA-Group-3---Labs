@@ -1,4 +1,5 @@
-import timeit
+import timeit, random
+from stack_function import Stack
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 from exponential_search import exponential_search, exponential_search_wrapper
 from binary_search import binary_search, binary_search_wrapper
@@ -9,9 +10,9 @@ from ternary_search import ternary_search, ternary_search_wrapper
 from gstacks import infix_to_postfix
 from pystacks import merge_sorted_lists, print_list, create_list
 from queque import Queue
-from stack import Stack
 from hashT import HashTable
 from stationsweb import Graph, mrt_graph
+from Sort import bubble_sort, selection_sort, insertion_sort, merge_sort, quick_sort, partition, measure_time
 
 app = Flask(__name__)
 
@@ -421,22 +422,28 @@ def profile_rona():
     return render_template('Ronalyn/profile.html')
 
 
+@app.route('/touppercas_rona')
+def touppercase_rona():
+    return render_template('Ronalyn/touppercase.html')
+
 @app.route('/ronaw', methods=['GET', 'POST'])
 def ronaw():
     result = None
     if request.method == 'POST':
         input_string = request.form.get('inputString', '')
         result = input_string.upper()
-    return render_template('Ronalyn/Works.html', result=result)
-@app.route('/touppercase')
-def touppercase_rona():
-    return render_template('Ronalyn/touppercase.html')
 
-@app.route('/areacircle')
-def areacircle():
+    return render_template('Ronalyn/touppercase.html', result=result)
+
+@app.route('/works_rona')
+def works_rona():
+    return render_template('Ronalyn/Works.html')
+
+@app.route('/areacircle_rona')
+def areacircle_rona():
     return render_template('Ronalyn/areacircle.html')
 
-@app.route('/areatriangle')
+@app.route('/areatriangle_rona')
 def areatriangle():
     return render_template('Ronalyn/areatriangle.html')
 
@@ -448,9 +455,64 @@ def ronac():
         email = request.form.get('email')
         message = request.form.get('message')
 
-
-
     return render_template('Ronalyn/Contacts.html')
+def merge_sorted_linked_lists(list1, list2):
+    dummy = LNode()
+    current = dummy
+
+    while list1 is not None and list2 is not None:
+      
+        if isinstance(list1.value, (int, float)) and isinstance(list2.value, (int, float)):
+            if list1.value < list2.value:
+                current.next = list1
+                list1 = list1.next
+            else:
+                current.next = list2
+                list2 = list2.next
+        elif isinstance(list1.value, str) and isinstance(list2.value, str):
+          
+            if list1.value.lower() < list2.value.lower():
+                current.next = list1
+                list1 = list1.next
+            else:
+                current.next = list2
+                list2 = list2.next
+        else:
+            raise ValueError("Unsupported data types in linked lists")
+
+        current = current.next
+
+    if list1 is not None:
+        current.next = list1
+    elif list2 is not None:
+        current.next = list2
+
+    return dummy.next
+
+
+
+@app.route('/mergelist_rona', methods=['GET', 'POST'])
+def merge_sorted_lists():
+    if request.method == 'POST':
+        values1 = request.form['values1'].split()
+        values2 = request.form['values2'].split()
+
+        linked_list1 = sorted_linked_list(values1)
+        linked_list2 = sorted_linked_list(values2)
+
+        if linked_list1 is not None and linked_list2 is not None:
+            merged_linked_list = merge_sorted_linked_lists(linked_list1, linked_list2)
+            merged_values = []
+
+            while merged_linked_list is not None:
+                merged_values.append(str(merged_linked_list.value))
+                merged_linked_list = merged_linked_list.next
+
+            result = "->".join(merged_values)
+            print("Result:", result)  
+            return render_template('Ronalyn/mergelist.html', result=result)
+
+    return render_template('Ronalyn/mergelist.html', result=None)
 
 #Michael
 @app.route('/michael')
@@ -612,9 +674,6 @@ def marga_upperCase():
 def marga_works():
     return render_template('marga/works.html')
 
-
-
-
 @app.route('/marga_areaOfcirle', methods=['GET', 'POST'])
 def marga_Area():
     result = None
@@ -637,7 +696,7 @@ class Node:
         self.data = data
         self.next = None
 
-class Stack:
+class Stack_py:
     def __init__(self):
         self.head = None
 
@@ -672,7 +731,7 @@ class Stack:
             current = current.next
 
 # Create an instance of the Stack
-stack_instance = Stack()
+stack_instance = Stack_py()
 
 @app.route('/marga_stack_index')
 def marga_stack_index():
@@ -1047,7 +1106,6 @@ def hashT():
 def pathf():
     stations_info = mrt_graph.display_stations()
 
-
     if request.method == 'POST':
         start_station = request.form['start_station']   
         end_station = request.form['end_station']
@@ -1059,6 +1117,54 @@ def pathf():
         return render_template('Website_html/pathf.html', stations_info=stations_info, result=result, output=output)
     
     return render_template('Website_html/pathf.html', stations_info=stations_info)
+
+
+
+
+
+@app.route('/sorting', methods=['GET', 'POST'])
+def sorting():
+    data = []
+    sorted_data = []
+    execution_time = 0
+    original_data = []
+
+    if request.method == 'POST':
+        range_value = int(request.form['range'])
+        data = random.sample(range(1, range_value + 1), range_value)
+
+        algorithm = request.form['algorithm']
+        original_data = data.copy()
+
+        if algorithm == 'bubble':
+            execution_time = measure_time(bubble_sort, data)
+            sorted_data = data.copy()
+        elif algorithm == 'selection':
+            execution_time = measure_time(selection_sort, data)
+            selection_sort(data)  # Sort the data in-place
+            sorted_data = data.copy()
+        elif algorithm == 'insertion':
+            execution_time = measure_time(insertion_sort, data)
+            insertion_sort(data)  # Sort the data in-place
+            sorted_data = data.copy()
+        elif algorithm == 'merge':
+            execution_time = measure_time(merge_sort, data)
+            merge_sort(data)  # Sort the data in-place
+            sorted_data = data.copy()
+        elif algorithm == 'quick':
+            execution_time = measure_time(quick_sort, data, 0, len(data) - 1)
+            quick_sort(data, 0, len(data) - 1)  # Sort the data in-place
+            sorted_data = data.copy()
+
+    # Return the JSON response
+    return render_template('Website_html/sort.html', data=original_data, sorted_data=sorted_data, execution_time=execution_time)
+
+
+# Render the template for both GET and POST requests
+@app.route('/sort_index')
+def index_sort():
+    return render_template('Website_html/sort.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)

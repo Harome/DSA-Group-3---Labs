@@ -210,11 +210,14 @@ p {
         </div>
     {% if current_stack %}
     <h2>Selected Stack: {{ current_stack }}</h2>
+
     <ul>
         {% for item in stacks[current_stack].print_stack() %}
             <li>{{ item }}</li>
         {% endfor %}
     </ul>
+
+
     {% else %}
     <h2>No stack selected.</h2>
 {% endif %}
