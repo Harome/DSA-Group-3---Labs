@@ -1,4 +1,4 @@
-import timeit
+import timeit, sys
 
 def bubble_sort(arr):
     n = len(arr)
@@ -76,6 +76,7 @@ def merge_sort(arr):
     return arr  # Return the sorted array
 
 def quick_sort(arr, low, high):
+    sys.setrecursionlimit(len(arr) + 1000)
     if low < high:
         partition_index = partition(arr, low, high)
 
