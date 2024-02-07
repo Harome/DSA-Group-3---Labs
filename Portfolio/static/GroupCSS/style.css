@@ -443,15 +443,30 @@ h2 {
 /* Graph Search */
 .graph-container {
     display: flex;
+    justify-content: space-between;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 90%;
+    height: 80%;
+    transform: translate(-50%, -30%);
+    color: #07374a;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(34, 33, 33);
+    margin-top: 2.5rem;
+
 }
 
 .graph-search-container {
     flex: 1;
-    max-width: 33%; /* Adjust to take up 1/3 of the screen */
-    max-height: 70vh;
+    max-width: 33%;
+    max-height: 100%;
     color: #07374a;
-    text-align: left;
     overflow-y: auto;
+    text-align: left;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -501,21 +516,37 @@ h2 {
     background-color: #07374a;
 }
 
+.graph-search-path p {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px;
+}
+
+
+.graph-search-station p {
+    margin: 0;
+    padding: 5px;
+    background-color: #25dfd5;
+    border-radius: 8px;
+}
+
 .graph-image-container {
     flex: 1;
     position: relative;
-    width: 66.666%;
-    height: 70vh;
+    width: 100%;
+    height: 90%;
+    padding: 20px;
     border-radius: 8px;
-    overflow: auto; /* Changed to 'auto' to enable scroll bar */
     box-shadow: 0 0 10px rgb(34, 33, 33);
-    align-items: center; /* Center vertically */
+    margin-top: 2.5rem;
+    align-items: center;
 }
 
 .graph-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit:contain;
     border-radius: 8px;
     box-shadow: 0 0 20px 10px rgb(255, 255, 255);
 }

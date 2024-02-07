@@ -1282,20 +1282,23 @@ def sorting():
         original_data = data.copy()
 
         if algorithm == 'bubble':
-            execution_time = measure_time(bubble_sort, data.copy())
+            execution_time = measure_time(bubble_sort, data)
             sorted_data = data.copy()
         elif algorithm == 'selection':
-            execution_time = measure_time(selection_sort, data.copy())
+            execution_time = measure_time(selection_sort, data)
+            selection_sort(data)  # Sort the data in-place
             sorted_data = data.copy()
         elif algorithm == 'insertion':
-            execution_time = measure_time(insertion_sort, data.copy())
+            execution_time = measure_time(insertion_sort, data)
+            insertion_sort(data)  # Sort the data in-place
             sorted_data = data.copy()
         elif algorithm == 'merge':
-            execution_time = measure_time(merge_sort, data.copy())
+            execution_time = measure_time(merge_sort, data)
+            merge_sort(data)  # Sort the data in-place
             sorted_data = data.copy()
         elif algorithm == 'quick':
-            execution_time = measure_time(quick_sort, data.copy(), 0, len(data) - 1)
-            quick_sort(data, 0, len(data) - 1)
+            execution_time = measure_time(quick_sort, data, 0, len(data) - 1)
+            quick_sort(data, 0, len(data) - 1)  # Sort the data in-place
             sorted_data = data.copy()
 
     # Return the JSON response

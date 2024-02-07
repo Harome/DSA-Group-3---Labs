@@ -216,8 +216,9 @@ ul {
 .project-image1 {
     position: relative;
     text-align: center;
-    height: 100%;
-    background-image: url("../../static/Group_pics/search-algo.png");
+    width: 80%;
+    height: 80%;
+    margin: auto;    background-image: url("../../static/Group_pics/search-algo.png");
     background-size: 50%;
     background-position:top;
     background-repeat: no-repeat;
@@ -238,8 +239,9 @@ ul {
 .project-image2 {
      position: relative;
      text-align: center;
-     height: 100%;
-     background-image: url("../../static/Group_pics/infix-postfix.png");
+     width: 80%;
+     height: 80%;
+     margin: auto;     background-image: url("../../static/Group_pics/infix-postfix.png");
      background-size: 50%;
      background-position: top;
      background-repeat: no-repeat;
@@ -259,7 +261,9 @@ ul {
 .project-image3 {
      position: relative;
      text-align: center;
-     height: 100%;
+     width: 80%;
+     height: 80%;
+     margin: auto;
      background-image: url("../../static/Group_pics/queue.png");
      background-size: 50%;
      background-position: top;
@@ -280,11 +284,13 @@ ul {
 .project-image4 {
     position: relative;
     text-align: center;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     background-image: url("../../static/Group_pics/hash-table.png");
     background-size: 50%;
     background-position: top;
     background-repeat: no-repeat;
+    margin: auto;
     transition: transform 0.3s ease;
 }
 
@@ -301,8 +307,9 @@ ul {
 .project-image5 {
     position: relative;
     text-align: center;
-    height: 100%;
-    background-image: url("../../static/Group_pics/graph-search.png");
+    width: 80%;
+    height: 80%;
+    margin: auto;    background-image: url("../Group_pics/Train.png");
     background-size: 75%;
     background-position: top;
     background-repeat: no-repeat;
@@ -322,8 +329,9 @@ ul {
 .project-image6 {
     position: relative;
     text-align: center;
-    height: 100%;
-    background-image: url("../../static/Group_pics/sort.png");
+    width: 80%;
+    height: 80%;
+    margin: auto;    background-image: url("../../static/Group_pics/sort.png");
     background-size: 75%;
     background-position: top;
     background-repeat: no-repeat;

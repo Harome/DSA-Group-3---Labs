@@ -67,8 +67,12 @@ class HashTable:
             if stack is not None:
                 for j, (stored_key, stored_data) in enumerate(stack):
                     if stored_data == data:
-                        del self.table[i][j]
+                        # Set the data to None
+                        self.table[i][j] = (stored_key, None)
                         print(f"Deleted data {data}")
+                        # Check if all data in the index is deleted, then set the entire index to None
+                        if all(data is None for _, data in stack):
+                            self.table[i] = None
                         return
         print(f"Data {data} not found")
 
