@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='Gregorio/style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="nav__content">
+            <div class="logo">
+                <a href="/michael">Just Johan</a>
+            </div>
+            <label for="check" class="checkbox">
+                <i class="ri-menu-line"></i>
+            </label>
+            <input type="checkbox" name="check" id="check">
+            <ul>
+                <li><a href="/michael_profile">Profile</a></li>
+                <li><a href="/michael_works">Works</a></li>
+                <li class="active"><a href="/michael_contacts">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="section">
+        <div class="section__container">
+            <div class="content">
+                <h1 class="title">
+                    I am <span>Michael Johan<br> </span> and here's how you can get in touch with me.
+                </h1>
+                <div class="card_body">
+                    <div class="col-md-3">
+                        <h5>Personal E-mail:</h5>
+                    </div>
+                    <div class="col-md-9 text-secondary">
+                        gregoriomichaeljohan@gmail.com
+                    </div>
+                    <div class="col-md-3">
+                        <h5>School E-mail:</h5>
+                    </div>
+                    <div class="col-md-9 text-secondary">
+                        michaeljohanagregorio@iskolarngbayan.pup.edu.ph
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Phone Number:</h5>
+                    </div>
+                    <div class="col-md-9 text-secondary">
+                        0947-583-6434 (SMART) <br> 0908-681-4440 (SMART)
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Social Media Accounts:</h5>
+                    </div>
+                    <div class="social-media-icons">
+                        <a href="https://www.facebook.com/michael.johan19/" class="social-icon" target="_blank"><i class="ri-facebook-circle-line"></i></a>
+                        <a href="https://twitter.com/mrgregg19" class="social-icon" target="_blank"><i class="ri-twitter-line"></i></a>
+                        <a href="https://www.instagram.com/mrgregg19/" class="social-icon" target="_blank"><i class="ri-instagram-line"></i></a>
+                    </div>
+                </div>
+                <div class="action__btns">
+                    <button class="home">
+                        <a href="/michael">
+                            Home
+                        </a>
+                    </button>
+                    <button class="works">
+                        <a href="/michael_works">
+                            My Works
+                        </a>
+                    </button>
+                </div>
+            </div>
+            <div class="image">
+                <img src="{{url_for('static', filename='Gregorio/pic9.jpg')}}" alt="profile" />
+            </div>
+        </div>
+    </section>
+</body>
+</html>

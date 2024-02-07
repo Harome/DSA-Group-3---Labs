@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='Gregorio/style.css')}}">
+    <title>Portfolio</title>
+</head>
+
+<body >
+    <nav>
+        <div class="nav__content">
+            <div class="logo">
+                <a href="/michael">Just Johan</a>
+            </div>
+            <label for="check" class="checkbox">
+                <i class="ri-menu-line"></i>
+            </label>
+            <input type="checkbox" name="check" id="check">
+            <ul>
+                <li><a href="/michael_profile">Profile</a></li>
+                <li><a href="/michael_works">Works</a></li>
+                <li><a href="/michael_contacts">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="section">
+        <div class="section__container">
+            <div class="content">
+                <p class="subtitle">HELLO</p>
+                <h1 class="title">
+                    I am <span>Michael Johan</span>, <br>  a Computer Engineering student
+                </h1>
+                <p class="description">
+                    Welcome to my Data Structure and Algorithm portfolio! I am Michael Johan Gregorio, a skilled and
+                    cooperative web developer-to-be, with a striving passion for creating aesthetically pleasing, and at the 
+                    same time, effective, and responsive sites. I have developed some projects that would surely show
+                    the range of my skills from calculators to string converters.
+                </p>
+                <div class="action__btns">
+                    <button class="about__me">Home</button>
+                    <button class="works">
+                        <a href="/michael_works">
+                            My Works
+                        </a>
+                    </button>
+                </div>
+            </div>
+            <div class="image">
+                <img src="{{url_for('static', filename='Gregorio/pic3.jpg')}}" alt="profile" />
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            overflow: hidden; 
+        }
+
+        .container {
+            background-image: url('{{ url_for('static', filename='Haro/images/1-1to.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+            text-align: left;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+            text-align: right;
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .content {
+            font-family: 'Georgia', serif;
+            max-width: 750px;
+            margin: 50px 0;
+            padding: 50px;
+            border: 3px solid #5e5e5e;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: flex; 
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .left-column {
+            flex: 1; 
+            padding: 20px;
+        }
+
+        .right-column {
+            flex: 1; 
+            padding: 20px;
+            text-align: left;
+        }
+
+        .profile-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="font-size: 30px; color: #fff;">Web of deep trial and Error</h1>
+        </div>
+
+        <div class="nav">
+            <ul style="list-style: none; padding: 0;">
+                <li style="display: inline; margin: 0 20px;">
+                    <a href="/haro" style="text-decoration: none; color: #fff;">Home</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="left-column">
+                <img class="profile-image" src="{{ url_for('static', filename='Haro/images/p1.png') }}" alt="Profile Image">
+            </div>
+            <div class="right-column">
+                <h1>Harold James D. Cruz</h1>
+                <p>Sophomore, Bachelor of Science in Computer Engineering</p>
+                <p>Dives in the world of data through data analytics and data engineering</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            &bull; Created on November 3, 2023
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='GroupCSS/style.css') }}">
+    <title>Queue Operations</title>
+    <header class="header">
+        {% include 'Website_html/navbar.html' %}
+    </header>
+</head>
+
+<body>
+    <div class="queue-container">
+        <h1>Queue Operations</h1>
+        <br>
+        <div class="queue-input">
+            <form method="POST" action="qqq">
+                <label for="data">Enter Data:</label>
+                <input type="text" id="data" name="data" required>
+                <button type="submit">Enqueue</button>
+            </form>
+        </div>
+        <div class="queue-removed">
+            {% if removed_data %}
+                <p>Removed Data: {{ removed_data }}</p>
+            {% endif %}
+            <form method="POST" action="remove">
+                <label for="remove_option">Remove Option:</label>
+                <select id="remove_option" name="remove_option">
+                    <option value="front">Remove from Front</option>
+                    <option value="rear">Remove from Rear</option>
+                </select>
+                <br>
+                <button type="submit">Remove</button>
+            </form>
+        </div>
+        <div class="queue-output"></div>
+            <h2>Current Queue:</h2>
+            <ul>
+                {% for node in queue %}
+                    <li>{{ node.data }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

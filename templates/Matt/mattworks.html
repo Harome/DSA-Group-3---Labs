@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Matt/mattstyle.css') }}">
+    <title>Portfolio</title>
+</head>
+<body>
+    <header class="header">
+        {% include 'Matt/mattnavbar.html' %}
+    </header>
+        <div class="bg"></div>
+        <div class = "proj">
+            <h1>PROJECTS</h1>
+                <ul class = "proj-content" id="proj-page">
+                    <li><a href="/mattuppercase">Convert to Uppercase</a></li>
+                    <li><a href="/mattcircle">Area of a Circle</a></li>
+                    <li><a href="/matttriangle">Area of a Triangle</a></li>
+                    <li><a href="/mattstack_page">Merging Stack</a></li>
+                </ul>
+            </div>
+        </div>
+</body>
+
+</html>
+
