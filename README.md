@@ -23,8 +23,5 @@ CSS:
 - Timothy Matthew C. Malto
 
 Function:
-- Timothy Matthew C. Malto
 - Harold James D. Cruz
-- Ann Margarette G. Concepcion
 - Aaron Paul E. Castillo
-- Jayvee Rayniel B. Iggo
